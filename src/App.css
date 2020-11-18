@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+  
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap');
+* {
+    font-family: 'Sora', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home-background {
+    width: 100%;
+    height: 95%;
+    background-size: contain;
+    z-index: -1;
+    position: absolute;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.home-text-group {
+    margin-top: 10rem;
+}
+
+.text-home {
+    color: #fff;
+    
+}
+
+.animate-text-custom {
+    animation: type 2.5s steps(20);
+    color: #fff;
+    white-space: nowrap;
+    font-family: 'Roboto Mono', monospace;
+    border-right: 3px solid white;
+    width: 20ch;
+}
+
+@keyframes type {
+    0% {
+        width: 0ch;
+    }
+
+    100% {
+        width: 20ch;
+    }
+}
+
+
+  @media screen and (max-width: 600px) {
+    .animate-text-custom {
+      font-size: 8vw;
+    }
+    .text-home {
+        font-size: 6vw;
+    }
   }
+
+
+
+ 
+  
+  
+  
+.nav-link-custom, .nav-link-custom::after, .nav-link-custom::before {
+    transition: all .5s;
+}
+.nav-link-custom:hover {
+    color: #555;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* stroke */
+.nav-link-custom {
+    position: relative;
+}
+.nav-link-custom:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #aaa;
+    height: 1px;
+}
+.nav-link-custom:hover:after {
+    width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.m-auto {
+    transition: height 1.5s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.pitch {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
 }
