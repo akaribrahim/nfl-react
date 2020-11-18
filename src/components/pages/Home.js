@@ -3,7 +3,7 @@ import {Button1} from '../ButtonStyles'
 import backgroundHome from '../../images/home-back.jpg'
 function Home() {
     return (
-        <div >
+        <div className="home" >
             <img className="home-background" src={backgroundHome} alt=""/>
             <div className="home-text-group container">
                 <h1 className="animate-text-custom">Depends on the way..</h1>

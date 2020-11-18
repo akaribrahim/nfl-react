@@ -17,11 +17,12 @@ export default class DraggableComponent extends Component {
   }
 
   handleDrag = (e, ui) => {  
-    const {x, y} = this.state.position;
+    var draggableRect = document.getElementById("helmet").getBoundingClientRect();
+    var parentRect = document.getElementById("pitchBox").getBoundingClientRect();
     this.setState({
       position: {
-        x: x + ui.deltaX,
-        y: y + ui.deltaY,
+        x: (draggableRect.x - parentRect.x) + 16,
+        y: (parentRect.bottom - draggableRect.y) - 16
       }
     });
   };
@@ -35,15 +36,14 @@ export default class DraggableComponent extends Component {
   render() {
     return (
       <Draggable
-        defaultPosition={{x:10, y:10}}
         onStart={this.handleStart}
         onDrag={this.handleDrag}
         onStop={this.handleStop} 
         bounds="parent">
           <div style={{"width":"fit-content"}}>
-            <GiAmericanFootballHelmet style={{"fontSize":"2em", "color":"black", "cursor":"pointer"}}/>
+            <GiAmericanFootballHelmet id="helmet" style={{"fontSize":"2em", "color":"black", "cursor":"pointer"}}/>
             {this.state.showPositions ? 
-                  <div style={{"fontSize":"0.8em","paddingLeft":"25px"}}>
+                  <div style={{"fontSize":"0.8em","paddingLeft":"25px","position":"absolute", "width":"100px"}}>
                     ({this.state.position.x.toFixed(0)}, {this.state.position.y.toFixed(0)})
                   </div>
                   : null}
