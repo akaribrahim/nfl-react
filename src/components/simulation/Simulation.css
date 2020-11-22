@@ -3,7 +3,6 @@
     height: 533px;
     border: 2px solid;
     position: relative;
-    
 }
 
 @media screen and (max-width : 1200px) {
@@ -22,8 +21,8 @@
 }
 @media screen and (max-width : 768px) {
     .pitch {
-        width: 480px;
-        height: 700px;
+        width: 90%;
+        height: 753px;
         border: 2px solid;
     }
 }
