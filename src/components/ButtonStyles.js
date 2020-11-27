@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Button1 = styled.button`
-    color: white;
+    color: black;
     $color: #fff;
     $body-color: #fff;
     $color1: #fff;

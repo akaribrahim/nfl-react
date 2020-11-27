@@ -1,20 +1,45 @@
 import React, { Component, Fragment } from 'react'
-import { Route, Switch } from 'react-router-dom'
-import Header from './Header'
+import Howitworks from './pages/Howitworks'
+import Navbar from './Navbar'
 import Home from './pages/Home'
-import SimulationPage from './simulation/SimulationPage'
+import Sidebar from './Sidebar'
+import {  Element } from "react-scroll";
+import AboutUs from './pages/AboutUs'
+
 export default class Main extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isOpen: false
+        }
+        this.toggle = this.toggle.bind(this);
+    }
+    
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
+
     render() {
         return (
-            <Fragment>
-                <Header/>
-                <Switch>
-                    <Route path="/home" exact component={Home}/>
-                    <Route path="/simulation" component={SimulationPage}/>
-                </Switch>
-
+            <>
+                <Sidebar isOpen={this.state.isOpen} toggle={this.toggle}/>
+                <Navbar toggle={this.toggle}/>
+                <Element className="section-element" id="home">
+                    <Home/>
+                </Element>
+                <Element className="section-element" id="howitworks" style={{'fontSize':'3rem','display':'flex','justifyContent':'center','alignItems':'center'}}>
+                    <Howitworks/>
+                </Element>
+                <Element className="section-element" id="aboutus" style={{'fontSize':'3rem','display':'flex','justifyContent':'center','alignItems':'center'}}>
+                    <AboutUs/>
+                </Element>
                 
-            </Fragment>
+                
+            </>
         )
     }
 }
+
+

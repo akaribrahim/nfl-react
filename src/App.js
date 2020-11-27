@@ -1,14 +1,18 @@
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-
 import Main from './components/Main'
+import SimulationPage from './components/simulation/SimulationPage';
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
-        <Main/>
+        <Switch>
+          <Route path='/' component={Main} exact />
+          <Route path='/simulation' component={SimulationPage} exact />
+        </Switch>
       </BrowserRouter>
     </>
   );
