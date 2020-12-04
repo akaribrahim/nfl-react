@@ -128,7 +128,7 @@ export default class DraggableComponent extends Component {
         onDrag={this.handleDrag}
         onStop={this.handleStop}
         disabled={this.state.isDialogOpen}
-        bounds="parent">
+        bounds={{left: 20, right:this.state.lastWidth-50, top:20, bottom:this.state.lastHeight-50-70}}>
           <div style={{"width":"fit-content"}}>
             <Helmet getDialogStatus={this.handleClick} isDragging={this.state.isDragging} />
             {this.state.showPositions ? 

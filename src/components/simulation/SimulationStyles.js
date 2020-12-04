@@ -19,3 +19,33 @@ export const NavLogo = styled(Link)`
         color: #fff;
     }
 `
+
+export const ScoreBoardBox = styled.div`
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+`
+
+export const ScoreBoard = styled.div`
+    width: 90%;
+    height: 100%;
+    display:flex;
+`
+
+export const HomeTeamBox = styled.div`
+    width: 30%;
+    height: 100%;
+`
+export const AwayTeamBox = styled.div`
+    width: 30%;
+    height: 100%;
+`
+export const MatchTime = styled.div`
+    background:gray;
+    width: 20%;
+    height: 100%;
+`
+

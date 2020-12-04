@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles, Button, Dialog, DialogActions, DialogContent, DialogTitle, InputLabel, Input, MenuItem, FormControl} from '@material-ui/core'
+import {makeStyles, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl} from '@material-ui/core'
 import {GiAmericanFootballHelmet} from 'react-icons/gi';
 import Select from 'react-select';
 import data from './players.json';

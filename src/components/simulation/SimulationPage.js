@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react'
 import {Col, Form, FormGroup, Label, Input} from 'reactstrap'
-import {SimulationNav, NavLogo} from './SimulationStyles'
+import {SimulationNav, NavLogo, ScoreBoardBox, ScoreBoard, HomeTeamBox, AwayTeamBox, MatchTime} from './SimulationStyles'
 import DraggableComponent from './DraggableComponent';
+import CustomSelect from './CustomSelect';
 import './Simulation.css'
 
-function SimulationPage() {
 
+function SimulationPage() {
     
+  
     return (
+        
         <Fragment>
             <SimulationNav>
                 <NavLogo to="/">
@@ -19,6 +22,19 @@ function SimulationPage() {
                     <div className="pitch">
                         <div id="pitchBox" style={{"width":"100%","height":"100%"}}>
                             <DraggableComponent/>
+                            <ScoreBoardBox>
+                                <ScoreBoard>
+                                    <HomeTeamBox>
+                                        <CustomSelect/>
+                                    </HomeTeamBox>
+                                    <AwayTeamBox>
+                                        <CustomSelect/>
+                                    </AwayTeamBox>
+                                    <MatchTime>
+
+                                    </MatchTime>
+                                </ScoreBoard>
+                            </ScoreBoardBox>
                         </div>   
                     </div>
                 </div>
