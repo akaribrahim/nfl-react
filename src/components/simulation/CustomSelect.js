@@ -18,7 +18,8 @@ import sf from '../../images/icons/sanfrancisco.png'
 import ss from '../../images/icons/seattle_seahawks.png'
 import tbb from '../../images/icons/tampabay.png'
 import wft from '../../images/icons/washington.png'
-const CustomSelect = () => {
+
+const CustomSelect = (props) => {
     const homeOptions = [
         { value: 'AC', label: 'Arizona Cardinals', color: "#A43E55", icon: ac },
         { value: 'AF', label: 'Atlanta Falcons', color: "#B53E52", icon: af },
@@ -41,7 +42,12 @@ const CustomSelect = () => {
 
 
     const selectStyles = {
-        control: styles => ({...styles, height: '60px'}),
+        control: (styles, state) => ({
+            ...styles,
+            height: '60px',
+            backgroundColor: '#A43E55',
+            
+        }),
         option: (styles, {data, isFocused, isSelected}) => {
             return {
                 ...styles,
@@ -49,11 +55,12 @@ const CustomSelect = () => {
                 alignItems: 'center',
                 height: '60px',
                 fontSize: '18px',
-                color: isFocused || isSelected ? 'white':null,
-                backgroundColor: isSelected ? data.color : isFocused ? data.color : null,
-                backgroundImage: isFocused || isSelected ? `url(${data.icon})` : null,
+                color: 'white',
+                backgroundColor: data.color,
+                backgroundImage: `url(${data.icon})`,
                 backgroundRepeat: 'no-repeat',
-                paddingLeft : isFocused || isSelected ? '50px' : null,
+                paddingLeft : '50px'
+                
                 
             }
         },
@@ -67,14 +74,34 @@ const CustomSelect = () => {
             backgroundRepeat: 'no-repeat',
             paddingLeft: '60px',
             height: '60px',
-            width: '100%',
+            color: 'white',
             backgroundPosition: 'left',
+            
         }),
+        valueContainer: (styles, { data }) => ({
+            ...styles,
+            width: '100%',
+            height: '100%',
+        })
     }
 
+    const handleChange = (e) => {
+        if(props.id === 'homeSelect'){
+            document.getElementById('homeSelect').children[1].style.backgroundColor = e.color
+        }
+        else{
+            document.getElementById('awaySelect').children[1].style.backgroundColor = e.color
+        }
+        console.log(e.value)
+        /* document.getElementById('selectBox').children[1].style.backgroundColor = e.color */
+        
+        
+    }
 
     return (
         <Select
+            id={props.id}
+            onChange={handleChange}
             defaultValue={homeOptions[0]}
             options={homeOptions}
             menuPlacement='top'

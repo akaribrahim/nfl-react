@@ -24,11 +24,11 @@ function SimulationPage() {
                             <DraggableComponent/>
                             <ScoreBoardBox>
                                 <ScoreBoard>
-                                    <HomeTeamBox>
-                                        <CustomSelect/>
+                                    <HomeTeamBox >
+                                        <CustomSelect id='homeSelect'/>
                                     </HomeTeamBox>
                                     <AwayTeamBox>
-                                        <CustomSelect/>
+                                        <CustomSelect id='awaySelect'/>
                                     </AwayTeamBox>
                                     <MatchTime>
                                         2nd &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:33
