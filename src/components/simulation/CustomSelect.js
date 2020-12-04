@@ -67,6 +67,7 @@ const CustomSelect = () => {
             backgroundRepeat: 'no-repeat',
             paddingLeft: '60px',
             height: '60px',
+            width: '100%',
             backgroundPosition: 'left',
         }),
     }

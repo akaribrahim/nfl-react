@@ -25,6 +25,7 @@ export const ScoreBoardBox = styled.div`
     height: 60px;
     position: absolute;
     bottom:0;
+    margin-bottom: 20px;    
     display: flex;
     justify-content: center;
 `
@@ -32,7 +33,7 @@ export const ScoreBoardBox = styled.div`
 export const ScoreBoard = styled.div`
     width: 90%;
     height: 100%;
-    display:flex;
+    display: flex;
 `
 
 export const HomeTeamBox = styled.div`
@@ -44,8 +45,21 @@ export const AwayTeamBox = styled.div`
     height: 100%;
 `
 export const MatchTime = styled.div`
-    background:gray;
+    background: #0a043c;
     width: 20%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+`
+export const OtherBox = styled.div`
+    background: #03506f;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 `
 

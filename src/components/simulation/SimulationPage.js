@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import {Col, Form, FormGroup, Label, Input} from 'reactstrap'
-import {SimulationNav, NavLogo, ScoreBoardBox, ScoreBoard, HomeTeamBox, AwayTeamBox, MatchTime} from './SimulationStyles'
+import {SimulationNav, NavLogo, ScoreBoardBox, ScoreBoard, HomeTeamBox, AwayTeamBox, MatchTime, OtherBox} from './SimulationStyles'
 import DraggableComponent from './DraggableComponent';
 import CustomSelect from './CustomSelect';
 import './Simulation.css'
@@ -31,8 +31,11 @@ function SimulationPage() {
                                         <CustomSelect/>
                                     </AwayTeamBox>
                                     <MatchTime>
-
+                                        2nd &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:33
                                     </MatchTime>
+                                    <OtherBox>
+                                        :15 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4th&amp;10
+                                    </OtherBox>
                                 </ScoreBoard>
                             </ScoreBoardBox>
                         </div>   
