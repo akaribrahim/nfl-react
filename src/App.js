@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={window.location.pathname || ''}>
         <Switch>
           <Route path='/' component={Main} exact />
           <Route path='/simulation' component={SimulationPage} exact />
