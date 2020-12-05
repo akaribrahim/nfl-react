@@ -50,7 +50,7 @@ function SimulationPage() {
             <div className="container-fluid">
                 <div className="row pt-5" style={{"display":"flex", "justifyContent":"center"}}  >
                     <div className="pitch">
-                        <div id="pitchBox" style={{"width":"100%","height":"100%"}}>
+                        <div id="pitchBox" style={{"width":"100%","height":"100%"}}> 
                             <DraggableComponent/>
                             <ScoreBoardBox>
                                 <ScoreBoard>
