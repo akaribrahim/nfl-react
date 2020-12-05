@@ -55,8 +55,8 @@ const CustomSelect = (props) => {
                 alignItems: 'center',
                 height: '60px',
                 fontSize: '18px',
-                color: 'white',
-                backgroundColor: data.color,
+                color: isFocused || isSelected ? 'white' : 'black',
+                backgroundColor: isFocused || isSelected ? data.color : null,
                 backgroundImage: `url(${data.icon})`,
                 backgroundRepeat: 'no-repeat',
                 paddingLeft : '50px'

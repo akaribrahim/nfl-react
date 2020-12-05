@@ -48,18 +48,28 @@ export const MatchTime = styled.div`
     background: #0a043c;
     width: 20%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #fff;
 `
-export const OtherBox = styled.div`
+export const Other = styled.div`
     background: #03506f;
     width: 20%;
     height: 100%;
+    color: #fff;
+`
+export const ScoreBoardText = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    height: 100%;
 `
-
+export const CustomSlider = styled.div`
+    display: ${props => props.isOpen ? 'block' : 'none'};
+    margin-top: -140px;
+    width: 90%;
+`
+export const SliderBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+`
