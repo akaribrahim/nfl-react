@@ -84,7 +84,7 @@
 .go-source-button {
     margin-bottom: 10px;
     width: 230px;
-    height: 60px;
+    height: 55px;
     background: #232a34;
     border-radius: 40px;
     display: flex;
@@ -108,7 +108,7 @@
     color: #f1f1f1;
     text-align: center;
     letter-spacing: 0.163rem;
-    line-height: 60px;
+    line-height: 55px;
     z-index: 5;
     font-size: 1rem;
     transition: .3s linear;
