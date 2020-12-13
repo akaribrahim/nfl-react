@@ -57,6 +57,7 @@ export const Other = styled.div`
     color: #fff;
 `
 export const ScoreBoardText = styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

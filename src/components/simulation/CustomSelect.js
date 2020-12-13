@@ -101,12 +101,12 @@ const CustomSelect = (props) => {
             display: 'flex',
             alignItems: 'center',
             fontFamily: 'Karla',
-            fontSize: '20px',
+            fontSize: '18px',
             backgroundImage: `url(${data.icon})`,
             backgroundRepeat: 'no-repeat',
             paddingLeft: '60px',
             height: '60px',
-            color: 'white',
+            color: data.value==='NO' ? 'black': 'white',
             backgroundPosition: 'left',
             
         }),
@@ -114,6 +114,11 @@ const CustomSelect = (props) => {
             ...styles,
             width: '100%',
             height: '100%',
+        }),
+        dropdownIndicator: (provided, state) => ({
+            ...provided,
+            transform: 'rotate(180deg)',
+            color: 'white'
         })
     }
 
@@ -138,7 +143,6 @@ const CustomSelect = (props) => {
             options={homeOptions}
             menuPlacement='top'
             styles={selectStyles}
-            components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null, }}
         />
     )
 }

@@ -49,7 +49,7 @@ function Home() {
                     <div className="go-source-button">
                         <span >View Source</span>
                         <div onClick={() => {
-                            window.open('https://www.github.com', '_blank');
+                            window.open('https://github.com/akaribrahim/nfl-react', '_blank');
                         }}><AiFillGithub/></div>
                     </div>
                 </div>

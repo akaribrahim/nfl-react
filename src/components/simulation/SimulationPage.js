@@ -3,6 +3,7 @@ import {Col, Form, FormGroup, Label, Input} from 'reactstrap'
 import {SimulationNav, NavLogo, ScoreBoardBox, ScoreBoard, HomeTeamBox, AwayTeamBox, MatchTime, Other, CustomSlider, ScoreBoardText, SliderBox} from './SimulationStyles'
 import DraggableComponent from './DraggableComponent';
 import CustomSelect from './CustomSelect';
+import {IoIosArrowUp} from 'react-icons/io';
 import './Simulation.css'
 import Slider from '@material-ui/core/Slider';
 
@@ -63,6 +64,10 @@ function SimulationPage() {
                                     <MatchTime onClick={handleMatchTime} >
                                         <ScoreBoardText >
                                             {matchTime} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:33
+                                            <IoIosArrowUp style={{
+                                                'position':'absolute',
+                                                'right':'10'
+                                            }}/>
                                         </ScoreBoardText>
                                         <SliderBox>
                                             <CustomSlider isOpen={isOpenTimeBox}>
@@ -78,15 +83,17 @@ function SimulationPage() {
                                                     marks
                                                     min={1}
                                                     max={4}
-                                                />
-                                                
+                                                />                                               
                                             </CustomSlider>
-                                        </SliderBox>
-                                        
+                                        </SliderBox>                                                                                
                                     </MatchTime>
                                     <Other onClick={handleOtherBox}>
                                         <ScoreBoardText>
                                             :15 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {down} &nbsp;&amp;&nbsp; {yard}
+                                            <IoIosArrowUp style={{
+                                                'position':'absolute',
+                                                'right':'10'
+                                            }}/>
                                         </ScoreBoardText>
                                         <SliderBox>
                                             <CustomSlider isOpen={isOpenOtherBox}>
