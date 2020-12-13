@@ -28,7 +28,7 @@ function Home() {
     return (
         <div className='home'>
             <HomeBg>
-                <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+                <VideoBg autoPlay loop muted src={Video} playsInline type='video/mp4' />
             </HomeBg>
             
             <div className="content-box">
