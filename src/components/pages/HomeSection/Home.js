@@ -6,24 +6,24 @@ import './Home.css'
 import styled from 'styled-components';
 import Video from '../../../videos/video.mp4'
 
+const VideoBg = styled.video`
+    width: 100%;
+    height: 800px;
+    -o-object-fit: cover;
+    object-fit:cover;
+    background: #232a34;
+`
+const HomeBg = styled.div`
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    width:100%;
+    height: 800px;
+    overflow:hidden;
+`
 function Home() {
-    const VideoBg = styled.video`
-        width: 100%;
-        height: 800px;
-        -o-object-fit: cover;
-        object-fit:cover;
-        background: #232a34;
-    `
-    const HomeBg = styled.div`
-        position:absolute;
-        top:0;
-        right:0;
-        bottom:0;
-        left:0;
-        width:100%;
-        height: 800px;
-        overflow:hidden;
-    `
     
     return (
         <div className='home'>

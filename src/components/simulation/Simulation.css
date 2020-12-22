@@ -1,8 +1,10 @@
+
 .pitch {
     width: 1200px;
     height: 533px;
     border: 2px solid;
     position: relative;
+    
 }
 
 @media screen and (max-width : 1200px) {

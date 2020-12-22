@@ -11,3 +11,4 @@
 [1204/234443.192:ERROR:process_info.cc(556)] ReadMemoryInfo failed
 [1204/234443.192:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Sona ermekte olan bir iþleme eriþmeye çalýþýldý. (0xc000010a)
 [1205/012450.000:ERROR:directory_reader_win.cc(43)] FindFirstFile: Sistem belirtilen yolu bulamýyor. (0x3)
+[1217/112058.611:ERROR:directory_reader_win.cc(43)] FindFirstFile: Sistem belirtilen yolu bulamýyor. (0x3)
