@@ -69,10 +69,10 @@ const DraggableHelmet = (props) => {
 						<Helmet player={props.player} helmetID={props.helmetID} getDialogStatus={handleClick} isDragging={isDragging} />
 					</div>
 				</CustomTooltip>
-				{/* <div style={{ position: "fixed", width: "300px" }}>
-					<div >{JSON.stringify(calculatedPosition)}</div>
-					<div>{JSON.stringify(position)}</div>
-				</div> */}
+					{/* <div style={{ position: "fixed", width: "300px" }}>
+						<div >{JSON.stringify(calculatedPosition)}</div>
+						<div>{JSON.stringify(position)}</div>
+					</div> */}
 			</div>
 		</Draggable>
 	);

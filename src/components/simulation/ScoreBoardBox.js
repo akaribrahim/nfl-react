@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	ScoreBoard,
 	HomeTeamBox,
@@ -8,29 +8,46 @@ import {
 	CustomSlider,
 	ScoreBoardText,
 	SliderBox,
-	HomeTeamText,
 	RightSide,
 	TeamText,
 } from "./SimulationStyles";
 import CustomSelect from "./CustomSelect";
 import { IoIosArrowUp } from "react-icons/io";
 import Slider from "@material-ui/core/Slider";
+import {useSelector, useDispatch} from 'react-redux';
+import {changeQuarter, changeDown, changeYard} from '../../redux/actions/ActionCreators'
+
 function ScoreBoardBox() {
+	const scoreBoardState = useSelector(state => state.scoreBoardState)
+	const dispatch = useDispatch()
+
 	const [isOpenTimeBox, setisOpenTimeBox] = useState(false);
-	const [matchTime, setmatchTime] = useState("1st");
+	const [matchTime, setmatchTime] = useState(scoreBoardState.selectedQuarter);
 
 	const [isOpenOtherBox, setisOpenOtherBox] = useState(false);
-	const [yard, setYard] = useState(1);
-	const [down, setDown] = useState("1st");
+	const [yard, setYard] = useState(scoreBoardState.selectedYard);
+	const [down, setDown] = useState(scoreBoardState.selectedDown);
 
+	useEffect(() => {
+		dispatch(changeQuarter(matchTime));
+	}, [dispatch,matchTime])
+	useEffect(() => {
+		dispatch(changeYard(yard))
+	}, [dispatch,yard])
+	useEffect(() => {
+		dispatch(changeDown(down))
+	}, [dispatch,down])
+	
 	const handleMatchTime = () => {
 		setisOpenTimeBox(!isOpenTimeBox);
 	};
 	const handleChangeMatchTime = (e, value) => {
-		if (value === 1) setmatchTime("1st");
-		else if (value === 2) setmatchTime("2nd");
-		else if (value === 3) setmatchTime("3rd");
-		else if (value === 4) setmatchTime("4th");
+		let s = ''
+		if (value === 1) s = "1st";
+		else if (value === 2) s = "2nd";
+		else if (value === 3) s = "3rd";
+		else if (value === 4) s = "4th";
+		setmatchTime(s)
 	};
 
 	const handleOtherBox = () => {
@@ -41,20 +58,22 @@ function ScoreBoardBox() {
 		else if (value === 2) setDown("2nd");
 		else if (value === 3) setDown("3rd");
 		else if (value === 4) setDown("4th");
+		
 	};
 	const handleChangeYard = (e, value) => {
 		setYard(value);
+		
 	};
-
+	
 	return (
 		<ScoreBoard>
 			<HomeTeamBox>
 				<TeamText>Home</TeamText>
-				<CustomSelect id="homeSelect" />
+				<CustomSelect default={scoreBoardState.homeTeamShort} id="homeSelect" />
 			</HomeTeamBox>
 			<AwayTeamBox>
 				<TeamText>Away</TeamText>
-				<CustomSelect id="awaySelect" />
+				<CustomSelect default={scoreBoardState.awayTeamShort} id="awaySelect" />
 			</AwayTeamBox>
 			<RightSide>
 				<MatchTime onClick={handleMatchTime}>

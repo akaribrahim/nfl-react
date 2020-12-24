@@ -1,6 +1,8 @@
 
 import React from 'react'
 import Select from 'react-select'
+import {changeHome, changeAway} from '../../redux/actions/ActionCreators'
+import { useDispatch} from 'react-redux'
 
 import ari from '../../shared/images/icons/arizona_cardinals.png'
 import atl from '../../shared/images/icons/atlanta_falcons.png'
@@ -36,6 +38,9 @@ import pit from '../../shared/images/icons/pittsburgh_steelers.png'
 import ten from '../../shared/images/icons/tennessee_titans.png'
 
 const CustomSelect = (props) => {
+    const dispatch = useDispatch()
+
+
     const homeOptions = [
         { value: 'ARI', label: 'Arizona Cardinals', color: "#A43E55", icon: ari },
         { value: 'ATL', label: 'Atlanta Falcons', color: "#B53E52", icon: atl },
@@ -77,7 +82,7 @@ const CustomSelect = (props) => {
         control: (styles, state) => ({
             ...styles,
             height: '60px',
-            backgroundColor: '#A43E55',
+            backgroundColor: homeOptions.find(initial => initial.value === props.default).color
             
         }),
         option: (styles, {data, isFocused, isSelected}) => {
@@ -106,6 +111,7 @@ const CustomSelect = (props) => {
             backgroundRepeat: 'no-repeat',
             paddingLeft: '60px',
             height: '60px',
+            width: '100%',
             color: data.value==='NO' ? 'black': 'white',
             backgroundPosition: 'left',
             
@@ -124,13 +130,14 @@ const CustomSelect = (props) => {
 
     const handleChange = (e) => {
         if(props.id === 'homeSelect'){
+            dispatch(changeHome(e.value))
             document.getElementById('homeSelect').children[1].style.backgroundColor = e.color
         }
         else{
+            dispatch(changeAway(e.value));
             document.getElementById('awaySelect').children[1].style.backgroundColor = e.color
         }
         console.log(e.value)
-        /* document.getElementById('selectBox').children[1].style.backgroundColor = e.color */
         
         
     }
@@ -139,7 +146,7 @@ const CustomSelect = (props) => {
         <Select
             id={props.id}
             onChange={handleChange}
-            defaultValue={homeOptions[0]}
+            defaultValue={homeOptions.find(initial => initial.value === props.default)}
             options={homeOptions}
             menuPlacement='top'
             styles={selectStyles}
