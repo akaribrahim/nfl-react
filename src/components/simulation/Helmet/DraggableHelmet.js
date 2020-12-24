@@ -16,8 +16,8 @@ const PlayerInformations = ({player}) => {
 };
 
 const DraggableHelmet = (props) => {
-	const [position, setPosition] = useState(props.player.position);
-	const [calculatedPosition, setCalculatedPosition] = useState(props.player.position);
+	const [position, setPosition] = useState(props.helmetPosition);
+	const [calculatedPosition, setCalculatedPosition] = useState(props.helmetPosition);
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const [isDragging, setIsDragging] = useState(false);
 	const [isHover, setIsHover] = useState(false);
@@ -58,23 +58,21 @@ const DraggableHelmet = (props) => {
 		<Draggable ref={ref} position={position} onStart={handleStart} onDrag={handleDrag} onStop={handleStop} disabled={isDialogOpen} bounds="parent">
 			<div
 				onMouseOver={() => {
-					console.log("over");
 					setIsHover(true);
 				}}
 				onMouseLeave={() => {
-					console.log("leave");
 					setIsHover(false);
 				}}
 				style={{ position: "absolute" }}>
 				<CustomTooltip open={!isDialogOpen && isHover && !isDragging} placement="top-start" title={<PlayerInformations player={props.player}/>}>
 					<div>
-						<Helmet getDialogStatus={handleClick} isDragging={isDragging} />
+						<Helmet player={props.player} helmetID={props.helmetID} getDialogStatus={handleClick} isDragging={isDragging} />
 					</div>
 				</CustomTooltip>
-				<div style={{ position: "fixed", width: "300px" }}>
-					{/* <div >{JSON.stringify(calculatedPosition)}</div> */}
+				{/* <div style={{ position: "fixed", width: "300px" }}>
+					<div >{JSON.stringify(calculatedPosition)}</div>
 					<div>{JSON.stringify(position)}</div>
-				</div>
+				</div> */}
 			</div>
 		</Draggable>
 	);

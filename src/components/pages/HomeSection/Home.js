@@ -4,7 +4,7 @@ import {AiFillGithub} from 'react-icons/ai'
 import {GiAmericanFootballHelmet} from 'react-icons/gi';
 import './Home.css'
 import styled from 'styled-components';
-import Video from '../../../videos/video.mp4'
+import Video from '../../../shared/videos/video.mp4'
 
 const VideoBg = styled.video`
     width: 100%;
