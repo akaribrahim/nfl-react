@@ -10,12 +10,12 @@ import {
 	SliderBox,
 	RightSide,
 	TeamText,
-} from "./SimulationStyles";
+} from "./ScoreBoardStyles";
 import CustomSelect from "./CustomSelect";
 import { IoIosArrowUp } from "react-icons/io";
 import Slider from "@material-ui/core/Slider";
 import {useSelector, useDispatch} from 'react-redux';
-import {changeQuarter, changeDown, changeYard} from '../../redux/actions/ActionCreators'
+import {changeQuarter, changeDown, changeYard} from '../../../redux/actions/ActionCreators'
 
 function ScoreBoardBox() {
 	const scoreBoardState = useSelector(state => state.scoreBoardState)

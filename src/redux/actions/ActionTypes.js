@@ -5,3 +5,4 @@ export const CHANGE_YARD = 'CHANGE_YARD';
 export const CHANGE_DOWN = 'CHANGE_DOWN';
 export const CHANGE_HOME = 'CHANGE_HOME';
 export const CHANGE_AWAY = 'CHANGE_AWAY';
+export const CHANGE_TEMPERATURE = 'CHANGE_TEMPERATURE';

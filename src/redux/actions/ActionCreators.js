@@ -40,3 +40,9 @@ export const changeAway = (selectedTeam) => ({
         newAway: selectedTeam
     }
 })
+export const changeTemperature = (selectedTemperature) => ({
+    type: ActionTypes.CHANGE_TEMPERATURE,
+    payload: {
+        newTemperature: selectedTemperature
+    }
+})
