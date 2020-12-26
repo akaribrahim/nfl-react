@@ -9,11 +9,11 @@ function App() {
 
 	return (
 		<>
-			<BrowserRouter basename={'/'}>
+			<BrowserRouter basename={process.env.PUBLIC_URL}>
 				<Switch>
-					<Route path={process.env.PUBLIC_URL + '/'} component={Main} exact />
+					<Route path='/' component={Main} exact />
 					<Provider store={store}>
-						<Route path={process.env.PUBLIC_URL + "/simulation"} component={SimulationPage} exact />
+						<Route path="/simulation" component={SimulationPage} exact />
 					</Provider>
 				</Switch>
 			</BrowserRouter>
