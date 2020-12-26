@@ -9,7 +9,7 @@ function App() {
 
 	return (
 		<>
-			<BrowserRouter basename={process.env.PUBLIC_URL}>
+			<BrowserRouter>
 				<Switch>
 					<Route path='/' component={Main} exact />
 					<Provider store={store}>
