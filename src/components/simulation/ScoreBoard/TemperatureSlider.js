@@ -70,10 +70,7 @@ export default function TemperatureSlider() {
   }
 
   return (
-    <div style={{"width":"280px", "position":"absolute", "top":0, "right":0}}>
-      {/* <Typography id="temp-slider" gutterBottom >
-        Temperature
-      </Typography> */}
+    
       <div>
         <CustomSlider
           min={-20}
@@ -84,8 +81,8 @@ export default function TemperatureSlider() {
           aria-labelledby="temp-slider"
           ThumbComponent={FaTemperatureHigh}
         />
-        <span style={{ marginLeft: "20px" }}>{currentDegree} °C</span>
+        <span style={{float:"right", width: "60px", marginLeft: "20px", marginTop:"12px"}}>{currentDegree} °C</span>
       </div>
-    </div>
+    
   );
 }
