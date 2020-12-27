@@ -32,19 +32,22 @@ export const Score = styled.div`
 export const WeatherBox = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-bottom: 10px;
 	position: absolute;
 	top: 0;
 	right: 0;
 `;
 export const WeatherIcon = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
 	height: 50px;
+	width: 50px;
 	right: 0;
 	top: 0;
 	font-size: 30px;
 	margin-right: 10px;
-	border-radius: 35px;
+	border-radius: 50%;
 	cursor: pointer;
 	transition: box-shadow .3s;
 	&:hover {
@@ -52,9 +55,10 @@ export const WeatherIcon = styled.div`
 		box-shadow: 0 0 11px blue; 
 	}
 `;
-export const Temperature = styled.div`
+export const WeatherSelectors = styled.div`
 	visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
 	opacity: ${(props) => (props.isOpen ? "1" : "0")};
-	margin-right: 50px;
-	transition: visibility 0.4s, opacity 0.5s linear;
-`;
+	transition: visibility 0.4s, opacity 0.3s ease-in-out;
+	margin-right: 60px;
+	
+`

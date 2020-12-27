@@ -7,7 +7,8 @@ const scoreBoard = {
     selectedQuarter: '1st',
     selectedYard: 10,
     selectedDown: '3rd',
-    selectedTemperature: 30
+    selectedTemperature: 30,
+    selectedCondition: 'N'     // Sunny -> S, Rain-Snow -> R, Normal -> N
 }
 
 export const ScoreBoardReducer = (state = scoreBoard, action) => {
@@ -24,6 +25,8 @@ export const ScoreBoardReducer = (state = scoreBoard, action) => {
             return {...state, selectedDown: action.payload.newDown}
         case ActionTypes.CHANGE_TEMPERATURE:
             return {...state, selectedTemperature: action.payload.newTemperature}
+        case ActionTypes.CHANGE_WEATHER_CONDITION:
+            return {...state, selectedCondition: action.payload.newCondition}
         default:
             return state;
     }

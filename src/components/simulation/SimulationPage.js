@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { SimulationNav, NavLogo, Score, WeatherBox, Temperature, WeatherIcon } from "./SimulationStyles";
+import { SimulationNav, NavLogo, Score, WeatherBox, Temperature, WeatherIcon, WeatherSelectors } from "./SimulationStyles";
 import "./Simulation.css";
 import TemperatureSlider from "./ScoreBoard/TemperatureSlider";
 import ScoreBoardBox from "./ScoreBoard/ScoreBoardBox";
-import { TiWeatherPartlySunny } from "react-icons/ti";
+import { TiWeatherCloudy } from "react-icons/ti";
 import DraggableHelmet from "./Helmet/DraggableHelmet";
 import { connect } from "react-redux";
+import WeatherCondition from "./ScoreBoard/WeatherCondition";
 
 const mapStateToProps = (state) => {
 	return {
@@ -16,7 +17,7 @@ const mapStateToProps = (state) => {
 };
 
 function SimulationPage({ playersOnPitch, allPlayers }) {
-	const [isOpenTemperature, setIsOpenTemperature] = useState(false);
+	const [isOpenWeather, setIsOpenWeather] = useState(false);
 	return (
 		<Fragment>
 			<SimulationNav>
@@ -26,14 +27,15 @@ function SimulationPage({ playersOnPitch, allPlayers }) {
 				<div className="row pt-5" style={{ display: "flex", justifyContent: "center" }}>
 					<div className="pitch">
 						<div id="pitchBox" style={{ width: "100%", height: "100%" }}>
-							<WeatherBox onBlur={() => setIsOpenTemperature(!isOpenTemperature)}>
+							<WeatherBox >
 								<div style={{position: "relative",}}>
-									<WeatherIcon>
-										<TiWeatherPartlySunny onClick={() => setIsOpenTemperature(!isOpenTemperature)} />
+									<WeatherIcon onClick={() => setIsOpenWeather(!isOpenWeather)}>
+										<TiWeatherCloudy />
 									</WeatherIcon>
-									<Temperature isOpen={isOpenTemperature}>
+									<WeatherSelectors isOpen={isOpenWeather}>
 										<TemperatureSlider />
-									</Temperature>
+										<WeatherCondition/>
+									</WeatherSelectors>
 								</div>
 							</WeatherBox>
 

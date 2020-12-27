@@ -46,3 +46,9 @@ export const changeTemperature = (selectedTemperature) => ({
         newTemperature: selectedTemperature
     }
 })
+export const changeWeatherCondition = (selectedCondition) => ({
+    type: ActionTypes.CHANGE_WEATHER_CONDITION,
+    payload: {
+        newCondition: selectedCondition
+    }
+})
