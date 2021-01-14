@@ -28,6 +28,7 @@ function ScoreBoardBox() {
 	const [yard, setYard] = useState(scoreBoardState.selectedYard);
 	const [down, setDown] = useState(scoreBoardState.selectedDown);
 
+	
 	useEffect(() => {
 		dispatch(changeQuarter(matchTime));
 	}, [dispatch,matchTime])

@@ -1,27 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { makeStyles, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, DialogContentText } from "@material-ui/core";
 import { GiAmericanFootballHelmet } from "react-icons/gi";
 import Select from "react-select";
-import { connect, useDispatch } from "react-redux";
-import {CHANGE_PLAYER} from '../../../redux/actions/ActionTypes';
-import {changePlayer} from '../../../redux/actions/ActionCreators'
-
-const mapStateToProps = (state) => {
-	return {
-		...state,
-		playersOnPitch: state.playersOnPitch,
-		players: state.players,
-	};
-};
+import { connect, useDispatch, useSelector } from "react-redux";
+import { CHANGE_PLAYER } from "../../../redux/actions/ActionTypes";
+import { changePlayer } from "../../../redux/actions/ActionCreators";
+import styled from "styled-components";
 
 const getPlayers = (players, playersOnPitch) => {
 	var playerOptions = [];
-
+	console.log("a,",players);
+	console.log("b",playersOnPitch)
 	players.map((player) => {
-    // In helmet select, includes all players except the players on the pitch already
-    // Boolean() returns true if <player> found in pitch so we only include there 
-    // players who are not on the pitch
-		if (!Boolean(playersOnPitch.find((x) => x.playerID === player.playerID))) { 
+		// In helmet select, includes all players except the players on the pitch already
+		// Boolean() returns true if <player> found in pitch so we only include there
+		// players who are not on the pitch
+		if (!Boolean(playersOnPitch.find((x) => x.playerID === player.playerNFLID))) {
 			let newPlayer = {
 				value: player.playerID,
 				label: player.playerName,
@@ -31,6 +25,19 @@ const getPlayers = (players, playersOnPitch) => {
 	});
 	return playerOptions;
 };
+
+
+
+
+
+const HelmetIcon = styled.div`
+	font-size : 2em; 
+	color: black;
+	cursor: pointer;
+	transform: ${(props) => (props.side === 'away' ? "rotateY(180deg)" : "none")}; 
+`;
+
+
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -46,17 +53,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Helmet(props) {
+	const players = useSelector(state => props.side === 'home' ? state.homePlayers : state.awayPlayers)
+	const playersOnPitch = useSelector(state => state.playersOnPitch.filter(selected => selected.team === props.side))
+	const [playerOptions, setplayerOptions] = React.useState([]);
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
-  const [playerOptions, setplayerOptions] = React.useState([]);
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-	React.useEffect(() => {
-		setplayerOptions(getPlayers(props.players, props.playersOnPitch));
-	}, [props.playersOnPitch]);
 
 	const handleClickOpen = (e) => {
 		if (!props.isDragging) {
+			setplayerOptions(getPlayers(players, playersOnPitch))
 			props.getDialogStatus(true);
 			setOpen(true);
 		}
@@ -67,15 +74,17 @@ function Helmet(props) {
 		setOpen(false);
 	};
 
-  const handleSelectChange = (data) => {
-    // data = { value : playerID, label: playerName}
-    // props.helmetID gives selected helmet on the pitch
-    // In the playersOnThePitch state, change the playerID(data.value) corresponding to props.helmetID
-    dispatch(changePlayer(data.value, props.helmetID));
-  }
+	const handleSelectChange = (data) => {
+		// data = { value : playerID, label: playerName}
+		// props.helmetID gives selected helmet on the pitch
+		// In the playersOnThePitch state, change the playerID(data.value) corresponding to props.helmetID
+		dispatch(changePlayer(data.value, props.helmetID));
+	};
 	return (
 		<div>
-			<GiAmericanFootballHelmet onClick={handleClickOpen} id="helmet" style={{ fontSize: "2em", color: "black", cursor: "pointer" }} />
+			<HelmetIcon side={props.side}>
+				<GiAmericanFootballHelmet  onClick={handleClickOpen} id="helmet" />
+			</HelmetIcon>
 
 			<Dialog className={classes.dialogBox} /* disableBackdropClick disableEscapeKeyDown */ open={open} onClose={handleClose}>
 				<DialogTitle>Select a Player</DialogTitle>
@@ -86,7 +95,7 @@ function Helmet(props) {
 					<form className={classes.container}>
 						<FormControl className={classes.formControl}>
 							<Select
-                				onChange = {handleSelectChange}
+								onChange={handleSelectChange}
 								menuPortalTarget={document.body}
 								className="basic-single"
 								classNamePrefix="select"
@@ -98,7 +107,7 @@ function Helmet(props) {
 						</FormControl>
 					</form>
 				</DialogContent>
-				<DialogActions style={{"display": "flex", "justifyContent":"center"}}>
+				<DialogActions style={{ display: "flex", justifyContent: "center" }}>
 					<Button onClick={handleClose} color="primary">
 						Ok
 					</Button>
@@ -108,4 +117,4 @@ function Helmet(props) {
 	);
 }
 
-export default connect(mapStateToProps)(Helmet);
+export default Helmet;

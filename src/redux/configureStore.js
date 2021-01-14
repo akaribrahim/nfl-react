@@ -1,17 +1,26 @@
-import {combineReducers, createStore} from 'redux';
-import { PlayersReducer } from './reducers/playersReducer';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { PlayersOnPitchReducer } from './reducers/pitchPlayersReducer';
 import { ScoreBoardReducer } from './reducers/scoreBoardReducer';
+import thunk from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension'
+import { TeamsReducer } from './reducers/teamsReducer';
+import { AwayPlayersReducer } from './reducers/awayPlayersReducer';
+import { HomePlayersReducer } from './reducers/homePlayersReducer';
 
 
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            players: PlayersReducer,
+            homePlayers : HomePlayersReducer,
+            awayPlayers: AwayPlayersReducer,
             playersOnPitch : PlayersOnPitchReducer,
-            scoreBoardState : ScoreBoardReducer
+            scoreBoardState : ScoreBoardReducer,
+            teams: TeamsReducer
         }),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        compose(
+            applyMiddleware(thunk),
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        ),
     );
 
     return store;

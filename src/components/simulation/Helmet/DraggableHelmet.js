@@ -3,17 +3,9 @@ import Draggable from "react-draggable";
 import Helmet from "./Helmet";
 import usePitchSize from "../Hooks/pitchSizeHook";
 import CustomTooltip from "./CustomTooltip";
+import { useSelector } from 'react-redux'
+import ReactLoading from 'react-loading'
 
-const PlayerInformations = ({player}) => {
-	return (
-		<div style={{ margin: "5px" }}>
-			<div style={{ textAlign: "center", marginBottom: "5px", fontSize: "13px" }}>{player.playerName}</div>
-			<div>Position: {player.playerPosition}</div>
-			<div>College: {player.playerCollege}</div>
-			<div>Height: {player.playerHeight} Weight: {player.playerWeight}</div>
-		</div>
-	);
-};
 
 const DraggableHelmet = (props) => {
 	const [position, setPosition] = useState(props.helmetPosition);
@@ -23,20 +15,25 @@ const DraggableHelmet = (props) => {
 	const [isHover, setIsHover] = useState(false);
 	const ref = useRef();
 	const [pitchWidth, pitchHeight] = usePitchSize();
+	const [bounds, setBounds] = useState({right:pitchWidth/2 - 30, bottom:pitchHeight - 190});
 	const [rate, setRate] = useState(position.x / pitchWidth);
-
+	const isHomeLoading = useSelector(state => state.scoreBoardState.isHomePlayersLoading)
+	const isAwayLoading = useSelector(state => state.scoreBoardState.isAwayPlayersLoading)
 
 	useEffect(() => {
 		setRate(position.x / pitchWidth);
 	}, [position]);
 	useEffect(() => {
+		setBounds({
+			right:pitchWidth/2 - 30,
+			bottom:pitchHeight - 190
+		})
 		setPosition({
 			x: Math.round(rate * pitchWidth),
 			y: Math.round(position.y),
 		});
 	}, [pitchWidth]);
 
-	const handleStart = () => {};
 	const handleDrag = () => {
 		var parentRect = document.getElementById("pitchBox").getBoundingClientRect();
 		const [x, y] = [ref.current.state.x, ref.current.state.y];
@@ -54,8 +51,9 @@ const DraggableHelmet = (props) => {
 		setIsHover(false);
 	};
 
-	return (
-		<Draggable ref={ref} position={position} onStart={handleStart} onDrag={handleDrag} onStop={handleStop} disabled={isDialogOpen} bounds="parent">
+	return (	
+		<Draggable ref={ref} position={position} onDrag={handleDrag} onStop={handleStop} disabled={isDialogOpen} 
+			bounds={{top:0, left:0, right:bounds.right, bottom:bounds.bottom}}>
 			<div
 				onMouseOver={() => {
 					setIsHover(true);
@@ -64,12 +62,15 @@ const DraggableHelmet = (props) => {
 					setIsHover(false);
 				}}
 				style={{ position: "absolute" }}>
-				<CustomTooltip open={!isDialogOpen && isHover && !isDragging} placement="top-start" title={<PlayerInformations player={props.player}/>}>
-					<div>
-						<Helmet player={props.player} helmetID={props.helmetID} getDialogStatus={handleClick} isDragging={isDragging} />
-					</div>
-				</CustomTooltip>
-					{/* <div style={{ position: "fixed", width: "300px" }}>
+				{(isHomeLoading && props.side==='home') || (isAwayLoading && props.side==='away') 
+					? <ReactLoading type={"bubbles"} color="#000" /> : 
+					<CustomTooltip open={!isDialogOpen && isHover && !isDragging} placement="top-start" side={props.side} player_id={props.playerID}>
+						<div>
+							<Helmet side={props.side} helmetID={props.helmetID} getDialogStatus={handleClick} isDragging={isDragging} />
+						</div>
+					</CustomTooltip>
+				}
+				{/* <div style={{ position: "fixed", width: "300px" }}>
 						<div >{JSON.stringify(calculatedPosition)}</div>
 						<div>{JSON.stringify(position)}</div>
 					</div> */}

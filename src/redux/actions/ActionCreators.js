@@ -1,5 +1,64 @@
 import * as ActionTypes from './ActionTypes';
+import axios from 'axios'
 
+export const getTeams = (teams) => ({
+    type: ActionTypes.GET_TEAMS,
+    payload: {
+        teams: teams,
+    }
+})
+
+export const fetchTeams = () => {
+    return (dispatch) => {
+        axios.get('https://nflrestapi.herokuapp.com/api/teams/')
+            .then(response => {
+                const teams = response.data;
+                dispatch(getTeams(teams));
+            })
+            .catch(error => {
+                const errMess = error.message
+            })
+    }
+}
+
+
+
+
+export const setHomePlayers = (players, side) => ({
+    type: ActionTypes.SET_HOME_PLAYERS,
+    payload: {
+        players: players,
+    }
+})
+export const setAwayPlayers = (players, side) => ({
+    type: ActionTypes.SET_AWAY_PLAYERS,
+    payload: {
+        players: players,
+    }
+})
+
+export const fetchPlayers = (selectedTeam, side) => {
+    return (dispatch) => {
+        axios.get(`https://nflrestapi.herokuapp.com/api/players/?season=2017&team=${selectedTeam}`)
+            .then(response => {
+                const players = response.data;
+                console.log(side, players)
+                side === 'home' ? dispatch(setHomePlayers(players)) : dispatch(setAwayPlayers(players))
+                dispatch(changeFieldPlayers(players.slice(0,6), side))
+                dispatch(changeLoadingStatus(false, side))
+            })
+            .catch(error => {
+                const errMess = error.message
+            })
+    }
+}
+export const changeFieldPlayers = (newPlayerIDs, side) => ({
+    type: ActionTypes.CHANGE_PLAYERS_ON_FIELD,
+    payload: {
+        playerIDs: newPlayerIDs,
+        team: side
+    }
+})
 
 export const changePlayer = (settedPlayerID, selectedHelmetID) => ({
     type: ActionTypes.CHANGE_PLAYER,
@@ -52,3 +111,11 @@ export const changeWeatherCondition = (selectedCondition) => ({
         newCondition: selectedCondition
     }
 })
+export const changeLoadingStatus = (status, side) => ({
+    type: ActionTypes.CHANGE_LOADING_STATUS,
+    payload: {
+        isLoading: status,
+        side: side
+    }
+})
+

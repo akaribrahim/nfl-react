@@ -29,6 +29,11 @@ export const Score = styled.div`
 	justify-content: center;
 `;
 
+export const PlayersBox = styled.div`
+	width: 100%;
+	height: calc(100% - 80px);
+`
+
 export const WeatherBox = styled.div`
 	display: flex;
 	justify-content: center;

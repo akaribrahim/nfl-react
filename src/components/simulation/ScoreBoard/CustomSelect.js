@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Select, {components} from "react-select";
-import { changeHome, changeAway } from "../../../redux/actions/ActionCreators";
+import { changeHome, changeAway, fetchTeams, changeLoadingStatus } from "../../../redux/actions/ActionCreators";
 import { useDispatch } from "react-redux";
 import './ScoreBoard.css'
 
@@ -39,6 +39,10 @@ import ten from "../../../shared/images/icons/tennessee_titans.png";
 
 const CustomSelect = (props) => {
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchTeams())
+	}, [dispatch])
 
 	const homeOptions = [
 		{ value: "ARI", label: "Arizona Cardinals", color: "#A43E55", icon: ari },
@@ -124,12 +128,13 @@ const CustomSelect = (props) => {
 	const handleChange = (e) => {
 		if (props.id === "homeSelect") {
 			dispatch(changeHome(e.value));
+			dispatch(changeLoadingStatus(true, 'home'));
 			document.getElementById("homeSelect").children[1].style.backgroundColor = e.color;
 		} else {
 			dispatch(changeAway(e.value));
+			dispatch(changeLoadingStatus(true, 'away'));
 			document.getElementById("awaySelect").children[1].style.backgroundColor = e.color;
 		}
-		console.log(e.value);
 	};
 
 	return (

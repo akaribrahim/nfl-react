@@ -1,4 +1,4 @@
-
+import * as ActionTypes from '../actions/ActionTypes'
 
 const players = [
     {playerID: 0, playerName:"Eric Berry", jerseyNumber: 29, playerHeight: "6-0", playerWeight : "212", playerCollege: "Tennessee", playerPosition: "SS", playerTeam: "KC"},
@@ -18,6 +18,14 @@ const players = [
 
 
 
-export const PlayersReducer = (state = players, action) => {
-    return state;
+export const HomePlayersReducer = (state = [], action) => {
+    switch(action.type) {
+        case ActionTypes.SET_HOME_PLAYERS:
+            console.log(action.payload)
+            var players = action.payload; // players
+            let newState = players.players
+            return newState     
+        default:
+            return state;
+    }
 }

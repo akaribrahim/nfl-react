@@ -18,7 +18,6 @@ export default function WeatherCondition() {
   const [isSunny, setIsSunny] = useState(false);
 
   useEffect(() => {
-    console.log('burda')
     if(condition === 'R'){
       setIsRainy(true);
       setIsNormal(false);

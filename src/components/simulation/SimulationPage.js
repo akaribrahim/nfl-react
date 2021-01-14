@@ -1,23 +1,19 @@
-import React, { Fragment, useState } from "react";
-import { SimulationNav, NavLogo, Score, WeatherBox, Temperature, WeatherIcon, WeatherSelectors } from "./SimulationStyles";
+import React, { Fragment, useEffect, useState } from "react";
+import { SimulationNav, NavLogo, Score, WeatherBox, Temperature, WeatherIcon, WeatherSelectors, PlayersBox } from "./SimulationStyles";
 import "./Simulation.css";
 import TemperatureSlider from "./ScoreBoard/TemperatureSlider";
 import ScoreBoardBox from "./ScoreBoard/ScoreBoardBox";
 import { TiWeatherCloudy } from "react-icons/ti";
-import DraggableHelmet from "./Helmet/DraggableHelmet";
-import { connect } from "react-redux";
+
+import { connect, useDispatch, useSelector } from "react-redux";
 import WeatherCondition from "./ScoreBoard/WeatherCondition";
+import { fetchPlayers, changeFieldPlayers, changeLoadingStatus } from "../../redux/actions/ActionCreators";
+import Players from "./Players/Players";
 
-const mapStateToProps = (state) => {
-	return {
-		...state,
-		allPlayers: state.players,
-		playersOnPitch: state.playersOnPitch,
-	};
-};
 
-function SimulationPage({ playersOnPitch, allPlayers }) {
+function SimulationPage() {
 	const [isOpenWeather, setIsOpenWeather] = useState(false);
+
 	return (
 		<Fragment>
 			<SimulationNav>
@@ -27,26 +23,22 @@ function SimulationPage({ playersOnPitch, allPlayers }) {
 				<div className="row pt-5" style={{ display: "flex", justifyContent: "center" }}>
 					<div className="pitch">
 						<div id="pitchBox" style={{ width: "100%", height: "100%" }}>
-							<WeatherBox >
-								<div style={{position: "relative",}}>
+							<WeatherBox>
+								<div style={{ position: "relative" }}>
 									<WeatherIcon onClick={() => setIsOpenWeather(!isOpenWeather)}>
 										<TiWeatherCloudy />
 									</WeatherIcon>
 									<WeatherSelectors isOpen={isOpenWeather}>
 										<TemperatureSlider />
-										<WeatherCondition/>
+										<WeatherCondition />
 									</WeatherSelectors>
 								</div>
 							</WeatherBox>
 
-							{playersOnPitch.map((player) => (
-								<DraggableHelmet
-									key={player.helmetID}
-									helmetID={player.helmetID}
-									helmetPosition={player.helmetPosition}
-									player={allPlayers.find((selected) => selected.playerID === player.playerID)}
-								/>
-							))}
+							
+							<PlayersBox>
+								<Players/>
+							</PlayersBox>
 
 							<Score>
 								<ScoreBoardBox />
@@ -59,4 +51,4 @@ function SimulationPage({ playersOnPitch, allPlayers }) {
 	);
 }
 
-export default connect(mapStateToProps)(SimulationPage);
+export default SimulationPage;
