@@ -1,44 +1,50 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { makeStyles, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, DialogContentText } from "@material-ui/core";
 import { GiAmericanFootballHelmet } from "react-icons/gi";
 import Select from "react-select";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { CHANGE_PLAYER } from "../../../redux/actions/ActionTypes";
+import { useDispatch, useSelector } from "react-redux";
 import { changePlayer } from "../../../redux/actions/ActionCreators";
 import styled from "styled-components";
-
 const getPlayers = (players, playersOnPitch) => {
-	var playerOptions = [];
-	console.log("a,",players);
-	console.log("b",playersOnPitch)
-	players.map((player) => {
-		// In helmet select, includes all players except the players on the pitch already
-		// Boolean() returns true if <player> found in pitch so we only include there
-		// players who are not on the pitch
-		if (!Boolean(playersOnPitch.find((x) => x.playerID === player.playerNFLID))) {
-			let newPlayer = {
-				value: player.playerID,
-				label: player.playerName,
-			};
-			playerOptions.push(newPlayer);
+	// When setting player options for helmet select, to group players by their positions,
+	// we reduce the players array to this format:
+	/* 
+		[
+			{
+				label: <SomePosition>
+				options: [..players who play at this position]
+			},
+			{
+				label: <SomePosition>
+				options: [..players who play at this position]
+			}
+		]
+	*/
+	return players.reduce((acc, curr) => {
+		if (Boolean(playersOnPitch.find((x) => x.playerID === curr.playerNFLID))) {
+			// In helmet select, includes all players except the players on the pitch already
+			// Boolean() returns true if <player> found in pitch so we only include there
+			// players who are not on the pitch
+			return acc;
 		}
-	});
-	return playerOptions;
+		let newPlayer = { value: curr.playerNFLID, label: curr.playerName };
+		let position = acc.find((element) => element.label === curr.playerPosition);
+		if (position === undefined) {
+			let newGroup = { label: curr.playerPosition, options: [newPlayer] };
+			acc.push(newGroup);
+		} else {
+			position.options.push(newPlayer);
+		}
+		return acc;
+	}, []);
 };
 
-
-
-
-
 const HelmetIcon = styled.div`
-	font-size : 2em; 
+	font-size: 2em;
 	color: black;
 	cursor: pointer;
-	transform: ${(props) => (props.side === 'away' ? "rotateY(180deg)" : "none")}; 
+	transform: ${(props) => (props.side === "away" ? "rotateY(180deg)" : "none")};
 `;
-
-
-
 const useStyles = makeStyles((theme) => ({
 	container: {
 		display: "flex",
@@ -52,18 +58,46 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+
+const GroupStyle = styled.div `
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 33px;
+	border-bottom: 1px solid black;
+`;	
+const positionStyles = {
+	color: "black",
+	fontStyle: "italic",
+};
+const groupBadgeStyles = {
+	backgroundColor: "#EBECF0",
+	borderRadius: "10px",
+	color: "black",
+	width: "20px",
+	height: "18px",
+	fontSize: 12,
+	textAlign: "center",
+};
+const formatGroupLabel = (data) => (
+	<GroupStyle>
+		<span style={positionStyles}>{data.label}</span>
+		<span style={groupBadgeStyles}>{data.options.length}</span>
+	</GroupStyle>
+);
+
 function Helmet(props) {
-	const players = useSelector(state => props.side === 'home' ? state.homePlayers : state.awayPlayers)
-	const playersOnPitch = useSelector(state => state.playersOnPitch.filter(selected => selected.team === props.side))
+	const players = useSelector((state) => (props.side === "home" ? state.homePlayers : state.awayPlayers));
+	const playersOnPitch = useSelector((state) => state.playersOnPitch.filter((selected) => selected.team === props.side));
 	const [playerOptions, setplayerOptions] = React.useState([]);
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const dispatch = useDispatch();
 
-
 	const handleClickOpen = (e) => {
 		if (!props.isDragging) {
-			setplayerOptions(getPlayers(players, playersOnPitch))
+			setplayerOptions(getPlayers(players, playersOnPitch));
 			props.getDialogStatus(true);
 			setOpen(true);
 		}
@@ -75,6 +109,7 @@ function Helmet(props) {
 	};
 
 	const handleSelectChange = (data) => {
+		console.log(data, props);
 		// data = { value : playerID, label: playerName}
 		// props.helmetID gives selected helmet on the pitch
 		// In the playersOnThePitch state, change the playerID(data.value) corresponding to props.helmetID
@@ -83,7 +118,7 @@ function Helmet(props) {
 	return (
 		<div>
 			<HelmetIcon side={props.side}>
-				<GiAmericanFootballHelmet  onClick={handleClickOpen} id="helmet" />
+				<GiAmericanFootballHelmet onClick={handleClickOpen} id="helmet" />
 			</HelmetIcon>
 
 			<Dialog className={classes.dialogBox} /* disableBackdropClick disableEscapeKeyDown */ open={open} onClose={handleClose}>
@@ -103,6 +138,7 @@ function Helmet(props) {
 								name="color"
 								isClearable
 								options={playerOptions}
+								formatGroupLabel={formatGroupLabel}
 							/>
 						</FormControl>
 					</form>

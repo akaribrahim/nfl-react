@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import React, {useEffect, useRef} from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import Typography from "@material-ui/core/Typography";
 import { useSelector } from 'react-redux'
+import { setRef } from "@material-ui/core";
 
 const useStylesBootstrap = makeStyles((theme) => ({
 	arrow: {
@@ -29,6 +28,8 @@ const PlayerInformations = ({ player }) => {
 
 export default function CustomTooltip(props) {
 	const classes = useStylesBootstrap();
+	const ref = useRef(0)
+
 	const player = useSelector(
 		state => props.side === 'home' 
 		?
@@ -36,9 +37,6 @@ export default function CustomTooltip(props) {
 		:
 		state.awayPlayers.find(current => current.playerNFLID === props.player_id)
 	)
-	useEffect(() => {
-		console.log(props)
-	}, [])
 	return (
 		<Tooltip title={<PlayerInformations player={player}/>} arrow classes={classes} {...props}></Tooltip>
 	);

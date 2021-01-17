@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { FaTemperatureHigh } from "react-icons/fa";
 import {useDispatch} from 'react-redux'

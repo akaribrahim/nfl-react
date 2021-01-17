@@ -1,7 +1,4 @@
-import React, {useEffect} from "react";
-import { useSelector } from 'react-redux'
-import { fetchPlayers } from "../../../redux/actions/ActionCreators";
-import DraggableHelmet from "../Helmet/DraggableHelmet";
+import React from "react";
 import AwayTeamPlayers from "./AwayTeamPlayers";
 import HomeTeamPlayers from "./HomeTeamPlayers";
 

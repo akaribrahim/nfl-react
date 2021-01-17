@@ -2,7 +2,6 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { PlayersOnPitchReducer } from './reducers/pitchPlayersReducer';
 import { ScoreBoardReducer } from './reducers/scoreBoardReducer';
 import thunk from 'redux-thunk';
-import {composeWithDevTools} from 'redux-devtools-extension'
 import { TeamsReducer } from './reducers/teamsReducer';
 import { AwayPlayersReducer } from './reducers/awayPlayersReducer';
 import { HomePlayersReducer } from './reducers/homePlayersReducer';
@@ -19,6 +18,7 @@ export const ConfigureStore = () => {
         }),
         compose(
             applyMiddleware(thunk),
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
         ),
     );
 

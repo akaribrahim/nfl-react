@@ -42,7 +42,6 @@ export const fetchPlayers = (selectedTeam, side) => {
         axios.get(`https://nflrestapi.herokuapp.com/api/players/?season=2017&team=${selectedTeam}`)
             .then(response => {
                 const players = response.data;
-                console.log(side, players)
                 side === 'home' ? dispatch(setHomePlayers(players)) : dispatch(setAwayPlayers(players))
                 dispatch(changeFieldPlayers(players.slice(0,6), side))
                 dispatch(changeLoadingStatus(false, side))

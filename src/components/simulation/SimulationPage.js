@@ -1,13 +1,11 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { SimulationNav, NavLogo, Score, WeatherBox, Temperature, WeatherIcon, WeatherSelectors, PlayersBox } from "./SimulationStyles";
+import React, { Fragment, useState } from "react";
+import { SimulationNav, NavLogo, Score, WeatherBox, WeatherIcon, WeatherSelectors, PlayersBox } from "./SimulationStyles";
 import "./Simulation.css";
 import TemperatureSlider from "./ScoreBoard/TemperatureSlider";
 import ScoreBoardBox from "./ScoreBoard/ScoreBoardBox";
 import { TiWeatherCloudy } from "react-icons/ti";
 
-import { connect, useDispatch, useSelector } from "react-redux";
 import WeatherCondition from "./ScoreBoard/WeatherCondition";
-import { fetchPlayers, changeFieldPlayers, changeLoadingStatus } from "../../redux/actions/ActionCreators";
 import Players from "./Players/Players";
 
 

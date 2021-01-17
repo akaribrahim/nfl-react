@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actions/ActionTypes'
 
-const players = [
+/* const players = [
     {playerID: 0, playerName:"Eric Berry", jerseyNumber: 29, playerHeight: "6-0", playerWeight : "212", playerCollege: "Tennessee", playerPosition: "SS", playerTeam: "KC"},
     {playerID: 1, playerName:"Allen Bailey", jerseyNumber: 97, playerHeight: "6-3", playerWeight : "288", playerCollege: "Miami", playerPosition: "DE", playerTeam: "KC"},
     {playerID: 2, playerName:"Justin Houston", jerseyNumber: 50, playerHeight: "6-3", playerWeight : "270", playerCollege: "Georgia", playerPosition: "DE", playerTeam: "KC"},
@@ -12,7 +12,7 @@ const players = [
     {playerID: 8, playerName:"Daniel Sorensen", jerseyNumber: 49, playerHeight: "6-2", playerWeight : "208", playerCollege: "Brigham Young", playerPosition: "SS", playerTeam: "KC"},
     {playerID: 9, playerName:"Marcus Peters", jerseyNumber: 22, playerHeight: "6-0", playerWeight : "197", playerCollege: "Washington", playerPosition: "CB", playerTeam: "KC"},
     {playerID: 10, playerName:"Chris Jones", jerseyNumber: 95, playerHeight: "6-6", playerWeight : "308", playerCollege: "Mississippi State", playerPosition: "DT", playerTeam: "KC"},
-];
+]; */
 
 
 
@@ -21,7 +21,6 @@ const players = [
 export const AwayPlayersReducer = (state = [], action) => {
     switch(action.type) {
         case ActionTypes.SET_AWAY_PLAYERS:
-            console.log(action.payload)
             var players = action.payload; // players
             let newState = players.players
             return newState     
