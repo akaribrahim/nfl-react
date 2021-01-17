@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, DialogContentText } from "@material-ui/core";
 import { GiAmericanFootballHelmet } from "react-icons/gi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { changePlayer } from "../../../redux/actions/ActionCreators";
 import styled from "styled-components";
+import './Helmet.css'
 const getPlayers = (players, playersOnPitch) => {
 	// When setting player options for helmet select, to group players by their positions,
 	// we reduce the players array to this format:
@@ -58,33 +59,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-
-const GroupStyle = styled.div `
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	height: 33px;
-	border-bottom: 1px solid black;
-`;	
-const positionStyles = {
-	color: "black",
-	fontStyle: "italic",
-};
-const groupBadgeStyles = {
-	backgroundColor: "#EBECF0",
-	borderRadius: "10px",
-	color: "black",
-	width: "20px",
-	height: "18px",
-	fontSize: 12,
-	textAlign: "center",
-};
 const formatGroupLabel = (data) => (
-	<GroupStyle>
-		<span style={positionStyles}>{data.label}</span>
-		<span style={groupBadgeStyles}>{data.options.length}</span>
-	</GroupStyle>
+	<div className='group'>
+		<span className='position_text'>{data.label}</span>
+		<span className='group_badge'>{data.options.length}</span>
+	</div>
 );
 
 function Helmet(props) {

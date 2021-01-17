@@ -1,0 +1,32 @@
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    width: 100%;
+    position: relative;
+    margin-top: -8px;
+  }
+  
+.group:after {
+    content: '';
+    width: 30%;
+    height: 1px;
+    background: black;
+    position: absolute;
+    bottom: 0px;
+}
+
+.position_text {
+    color: black;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.group_badge {
+    background-color: black;
+    width: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
