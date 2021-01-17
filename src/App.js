@@ -4,9 +4,10 @@ import Main from "./components/Main";
 import SimulationPage from "./components/simulation/SimulationPage";
 import { Provider } from "react-redux";
 import { ConfigureStore } from "./redux/configureStore";
+
 function App() {
 	const store = ConfigureStore();
-
+	
 	return (
 		<>
 			<BrowserRouter>

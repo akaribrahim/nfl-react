@@ -24,7 +24,6 @@ const HomeBg = styled.div`
     overflow:hidden;
 `
 function Home() {
-    
     return (
         <div className='home'>
             <HomeBg>

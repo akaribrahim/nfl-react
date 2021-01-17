@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LogoImage from "../../shared/images/nfl_logo.png";
 export const SimulationNav = styled.div`
 	background: #393e46;
 	display: flex;
@@ -66,4 +67,28 @@ export const WeatherSelectors = styled.div`
 	transition: visibility 0.4s, opacity 0.3s ease-in-out;
 	margin-right: 60px;
 	
+`
+
+export const SmallScreen = styled.div`
+	width: 100%;
+	height: 700px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`
+export const SmallScreenText = styled.div`
+	position: absolute;
+	top: 40px;
+	font-size: 30px;
+	text-align: center;
+	width: 70%;
+	z-index: 3;
+`
+export const BackgroundLogo = styled.div`
+	width: 300px;
+	height: 400px;
+	background-image: url(${LogoImage});
+	background-size: cover;
+	opacity: 0.3;
 `

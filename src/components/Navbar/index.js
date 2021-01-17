@@ -14,7 +14,6 @@ const Navbar = (props) => {
                         <FaBars />
                     </MobileIcon>
                     <NavMenu>
-                        
                         <NavItem>
                             <NavLink activeClass="active" to="home"  spy={true}
                                 smooth={true} offset={-70} duration={800} >
