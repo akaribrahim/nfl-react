@@ -1,7 +1,7 @@
 
 .pitch {
     width: 1200px;
-    height: 533px;
+    height: 620px;
     border: 2px solid;
     position: relative;
     
@@ -10,14 +10,14 @@
 @media screen and (max-width : 1200px) {
     .pitch {
         width: 90%;
-        height: 553px;
+        height: 620px;
         border: 2px solid;
     }
 }
 @media screen and (max-width : 992px) {
     .pitch {
         width: 98%;
-        height: 553px;
+        height: 620px;
         border: 2px solid;
     }
 }

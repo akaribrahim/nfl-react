@@ -50,7 +50,7 @@ function SimulationPage() {
 					</div>
 					<div className="row pt-2" style={{ display: "flex", justifyContent: "center" }}>
 						<div className="pitch">
-							<div id="pitchBox" style={{ width: "100%", height: "100%" }}>
+							<div id="pitchBox" style={{ width: "100%", height: "100%"}}>
 								<WeatherBox>
 									<div ref={weatherSelectorsRef} style={{ position: "relative" }}>
 										<WeatherIcon onClick={() => setIsOpenWeather(!isOpenWeather)}>

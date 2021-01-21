@@ -43,7 +43,7 @@ export const fetchPlayers = (selectedTeam, selectedSeason, side) => {
             .then(response => {
                 const players = response.data;
                 side === 'home' ? dispatch(setHomePlayers(players)) : dispatch(setAwayPlayers(players))
-                dispatch(changeFieldPlayers(players.slice(0,6), side))
+                dispatch(changeFieldPlayers(players.slice(0,12), side))
                 dispatch(changeLoadingStatus(false, side))
                 dispatch(changeSeasonLoadingStatus(false))
             })

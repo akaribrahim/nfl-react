@@ -21,7 +21,7 @@ function AwayTeamPlayers() {
                     helmetID={player.helmetID}
                     helmetPosition={player.helmetPosition}
                     playerID = {player.playerID}
-                    side = {'away'}
+                    side={'away'}
                 />
             ))}
         </div>

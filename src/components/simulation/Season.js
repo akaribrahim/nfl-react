@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeSeason, changeSeasonLoadingStatus } from "../../redux/actions/ActionCreators";
 import ReactLoading from "react-loading";
 import Tooltip from "@material-ui/core/Tooltip";
+
 const seasonTooltip = "You can choose the season you want. We will take players who played in the selected season. Default is 2017."
+
 export default function Season() {
 	const [isOpenSeasons, setIsOpenSeasons] = useState(false);
 	const [season, setSeason] = useState("2017");

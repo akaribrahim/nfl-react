@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changePlayer } from "../../../redux/actions/ActionCreators";
 import styled from "styled-components";
 import './Helmet.css'
+
+
+
 const getPlayers = (players, playersOnPitch) => {
 	// When setting player options for helmet select, to group players by their positions,
 	// we reduce the players array to this format:
@@ -42,7 +45,7 @@ const getPlayers = (players, playersOnPitch) => {
 
 const HelmetIcon = styled.div`
 	font-size: 2em;
-	color: black;
+	color: ${(props) => (props.side === "home" ? "#000" : "#7d0633")};
 	cursor: pointer;
 	transform: ${(props) => (props.side === "away" ? "rotateY(180deg)" : "none")};
 `;

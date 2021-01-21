@@ -15,18 +15,18 @@ const DraggableHelmet = (props) => {
 	const [isHover, setIsHover] = useState(false);
 	const ref = useRef();
 	const [pitchWidth, pitchHeight] = usePitchSize();
-	const [bounds, setBounds] = useState({right:pitchWidth/2 - 30, bottom:pitchHeight - 190});
+	const [bounds, setBounds] = useState({});
 	const [rate, setRate] = useState(position.x / pitchWidth);
 	const isHomeLoading = useSelector(state => state.scoreBoardState.isHomePlayersLoading)
 	const isAwayLoading = useSelector(state => state.scoreBoardState.isAwayPlayersLoading)
-
+	console.log('helmetID',props.helmetID, position)
 	useEffect(() => {
 		setRate(position.x / pitchWidth);
 	}, [position]);
 	useEffect(() => {
 		setBounds({
 			right:pitchWidth/2 - 30,
-			bottom:pitchHeight - 190
+			bottom:pitchHeight - 150
 		})
 		setPosition({
 			x: Math.round(rate * pitchWidth),

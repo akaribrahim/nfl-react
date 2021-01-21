@@ -37,6 +37,41 @@ import nyj from "../../../shared/images/icons/newyork_jets.png";
 import pit from "../../../shared/images/icons/pittsburgh_steelers.png";
 import ten from "../../../shared/images/icons/tennessee_titans.png";
 
+const teamOptions = [
+	{ value: "ARI", label: "Arizona Cardinals", color: "#A43E55", icon: ari },
+	{ value: "ATL", label: "Atlanta Falcons", color: "#B53E52", icon: atl },
+	{ value: "CAR", label: "Carolina Panthers", color: "#0185CA", icon: car },
+	{ value: "CHI", label: "Chicago Bears", color: "#0B1629", icon: chi },
+	{ value: "DAL", label: "Dallas Cowboys", color: "#012244", icon: dal },
+	{ value: "DET", label: "Detroit Lions", color: "#0076B4", icon: det },
+	{ value: "GB", label: "Green Bay Packers", color: "#3B4E4A", icon: gb },
+	{ value: "LA", label: "Los Angeles Rams", color: "#1E4EA2", icon: la },
+	{ value: "MIN", label: "Minnesota Vikings", color: "#532A86", icon: min },
+	{ value: "NO", label: "New Orleans Saints", color: "#DCC9A4", icon: no },
+	{ value: "NYG", label: "New York Giants", color: "#0B2265", icon: nyg },
+	{ value: "PHI", label: "Philadelphia Eagles", color: "#1F6269", icon: phi },
+	{ value: "SF", label: "San Francisco 49ers", color: "#AB0002", icon: sf },
+	{ value: "SEA", label: "Seattle Seahawks", color: "#1E3E5C", icon: sea },
+	{ value: "TB", label: "Tampa Bay Buccaneers", color: "#B2344A", icon: tb },
+	{ value: "WAS", label: "Washington Football Team", color: "#5A1315", icon: was },
+	{ value: "BAL", label: "Baltimore Ravens", color: "#241774", icon: bal },
+	{ value: "BUF", label: "Buffalo Bills", color: "#1E4C9C", icon: buf },
+	{ value: "CIN", label: "Cincinnati Bengals", color: "#FB4F13", icon: cin },
+	{ value: "CLE", label: "Cleveland Browns", color: "#FF3C01", icon: cle },
+	{ value: "DEN", label: "Denver Broncos", color: "#1E3E5C", icon: den },
+	{ value: "HOU", label: "Houston Texans", color: "#223C48", icon: hou },
+	{ value: "IND", label: "Indianapolis Colts", color: "#1D4671", icon: ind },
+	{ value: "JAX", label: "Jacksonville Jaguars", color: "#292929", icon: jax },
+	{ value: "KC", label: "Kansas City Chiefs", color: "#E83D57", icon: kc },
+	{ value: "OAK", label: "Oakland Raiders", color: "#272727", icon: oak },
+	{ value: "LAC", label: "Los Angeles Chargers", color: "#0080C7", icon: lac },
+	{ value: "MIA", label: "Miami Dolphins", color: "#008E97", icon: mia },
+	{ value: "NE", label: "New England Patriots", color: "#002244", icon: ne },
+	{ value: "NYJ", label: "New York Jets", color: "#003F2C", icon: nyj },
+	{ value: "PIT", label: "Pittsburgh Steelers", color: "#292929", icon: pit },
+	{ value: "TEN", label: "Tennessee Titans", color: "#012244", icon: ten },
+];
+
 const CustomSelect = (props) => {
 	const dispatch = useDispatch();
 
@@ -44,46 +79,13 @@ const CustomSelect = (props) => {
 		dispatch(fetchTeams())
 	}, [dispatch])
 
-	const homeOptions = [
-		{ value: "ARI", label: "Arizona Cardinals", color: "#A43E55", icon: ari },
-		{ value: "ATL", label: "Atlanta Falcons", color: "#B53E52", icon: atl },
-		{ value: "CAR", label: "Carolina Panthers", color: "#0185CA", icon: car },
-		{ value: "CHI", label: "Chicago Bears", color: "#0B1629", icon: chi },
-		{ value: "DAL", label: "Dallas Cowboys", color: "#012244", icon: dal },
-		{ value: "DET", label: "Detroit Lions", color: "#0076B4", icon: det },
-		{ value: "GB", label: "Green Bay Packers", color: "#3B4E4A", icon: gb },
-		{ value: "LA", label: "Los Angeles Rams", color: "#1E4EA2", icon: la },
-		{ value: "MIN", label: "Minnesota Vikings", color: "#532A86", icon: min },
-		{ value: "NO", label: "New Orleans Saints", color: "#DCC9A4", icon: no },
-		{ value: "NYG", label: "New York Giants", color: "#0B2265", icon: nyg },
-		{ value: "PHI", label: "Philadelphia Eagles", color: "#1F6269", icon: phi },
-		{ value: "SF", label: "San Francisco 49ers", color: "#AB0002", icon: sf },
-		{ value: "SEA", label: "Seattle Seahawks", color: "#1E3E5C", icon: sea },
-		{ value: "TB", label: "Tampa Bay Buccaneers", color: "#B2344A", icon: tb },
-		{ value: "WAS", label: "Washington Football Team", color: "#5A1315", icon: was },
-		{ value: "BAL", label: "Baltimore Ravens", color: "#241774", icon: bal },
-		{ value: "BUF", label: "Buffalo Bills", color: "#1E4C9C", icon: buf },
-		{ value: "CIN", label: "Cincinnati Bengals", color: "#FB4F13", icon: cin },
-		{ value: "CLE", label: "Cleveland Browns", color: "#FF3C01", icon: cle },
-		{ value: "DEN", label: "Denver Broncos", color: "#1E3E5C", icon: den },
-		{ value: "HOU", label: "Houston Texans", color: "#223C48", icon: hou },
-		{ value: "IND", label: "Indianapolis Colts", color: "#1D4671", icon: ind },
-		{ value: "JAX", label: "Jacksonville Jaguars", color: "#292929", icon: jax },
-		{ value: "KC", label: "Kansas City Chiefs", color: "#E83D57", icon: kc },
-		{ value: "OAK", label: "Oakland Raiders", color: "#272727", icon: oak },
-		{ value: "LAC", label: "Los Angeles Chargers", color: "#0080C7", icon: lac },
-		{ value: "MIA", label: "Miami Dolphins", color: "#008E97", icon: mia },
-		{ value: "NE", label: "New England Patriots", color: "#002244", icon: ne },
-		{ value: "NYJ", label: "New York Jets", color: "#003F2C", icon: nyj },
-		{ value: "PIT", label: "Pittsburgh Steelers", color: "#292929", icon: pit },
-		{ value: "TEN", label: "Tennessee Titans", color: "#012244", icon: ten },
-	];
+	
 
 	const selectStyles = {
 		control: (styles, state) => ({
 			...styles,
 			height: "60px",
-			backgroundColor: homeOptions.find((initial) => initial.value === props.default).color,
+			backgroundColor: teamOptions.find((initial) => initial.value === props.default).color,
 		}),
 		option: (styles, { data, isFocused, isSelected }) => {
 			return {
@@ -139,8 +141,8 @@ const CustomSelect = (props) => {
 		<Select
 			id={props.id}
 			onChange={handleChange}
-			defaultValue={homeOptions.find((initial) => initial.value === props.default)}
-			options={homeOptions}
+			defaultValue={teamOptions.find((initial) => initial.value === props.default)}
+			options={teamOptions}
 			menuPlacement="top"
             styles={selectStyles}
 			components={{
