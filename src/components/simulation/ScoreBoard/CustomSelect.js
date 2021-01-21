@@ -128,11 +128,9 @@ const CustomSelect = (props) => {
 	const handleChange = (e) => {
 		if (props.id === "homeSelect") {
 			dispatch(changeHome(e.value));
-			dispatch(changeLoadingStatus(true, 'home'));
 			document.getElementById("homeSelect").children[1].style.backgroundColor = e.color;
 		} else {
 			dispatch(changeAway(e.value));
-			dispatch(changeLoadingStatus(true, 'away'));
 			document.getElementById("awaySelect").children[1].style.backgroundColor = e.color;
 		}
 	};

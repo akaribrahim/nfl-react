@@ -37,14 +37,15 @@ export const setAwayPlayers = (players, side) => ({
     }
 })
 
-export const fetchPlayers = (selectedTeam, side) => {
+export const fetchPlayers = (selectedTeam, selectedSeason, side) => {
     return (dispatch) => {
-        axios.get(`https://nflrestapi.herokuapp.com/api/players/?season=2017&team=${selectedTeam}`)
+        axios.get(`https://nflrestapi.herokuapp.com/api/players/?season=${selectedSeason}&team=${selectedTeam}`)
             .then(response => {
                 const players = response.data;
                 side === 'home' ? dispatch(setHomePlayers(players)) : dispatch(setAwayPlayers(players))
                 dispatch(changeFieldPlayers(players.slice(0,6), side))
                 dispatch(changeLoadingStatus(false, side))
+                dispatch(changeSeasonLoadingStatus(false))
             })
             .catch(error => {
                 const errMess = error.message
@@ -117,4 +118,15 @@ export const changeLoadingStatus = (status, side) => ({
         side: side
     }
 })
-
+export const changeSeason = (selectedSeason) => ({
+    type: ActionTypes.CHANGE_SEASON,
+    payload: {
+        newSeason: selectedSeason
+    }
+})
+export const changeSeasonLoadingStatus = (isLoading) => ({
+    type: ActionTypes.CHANGE_SEASON_LOADING_STATUS,
+    payload: {
+        isSeasonLoading: isLoading
+    }
+})

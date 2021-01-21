@@ -56,12 +56,14 @@ export const CustomSlider = styled.div`
 	display: ${(props) => (props.isOpen ? "block" : "none")};
 	margin-top: -140px;
 	width: 90%;
+	background-color: white; // BURAYI UNUTMA
 `;
 export const SliderBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
+	
 `;
 
 

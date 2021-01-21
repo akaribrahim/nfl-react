@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
 	ScoreBoard,
 	HomeTeamBox,
@@ -16,19 +16,25 @@ import { IoIosArrowUp } from "react-icons/io";
 import Slider from "@material-ui/core/Slider";
 import {useSelector, useDispatch} from 'react-redux';
 import {changeQuarter, changeDown, changeYard} from '../../../redux/actions/ActionCreators'
+import OutsideClick from "../Hooks/outsideClick";
 
 function ScoreBoardBox() {
 	const scoreBoardState = useSelector(state => state.scoreBoardState)
 	const dispatch = useDispatch()
+	
 
-	const [isOpenTimeBox, setisOpenTimeBox] = useState(false);
+	const [isOpenTimeBox, setIsOpenTimeBox] = useState(false);
+	const [isOpenOtherBox, setIsOpenOtherBox] = useState(false);
 	const [matchTime, setmatchTime] = useState(scoreBoardState.selectedQuarter);
-
-	const [isOpenOtherBox, setisOpenOtherBox] = useState(false);
 	const [yard, setYard] = useState(scoreBoardState.selectedYard);
 	const [down, setDown] = useState(scoreBoardState.selectedDown);
+	const rightSideRef = useRef(null);
+	const rightSideOutsideClick = OutsideClick(rightSideRef);
 
-	
+	useEffect(() => {
+		setIsOpenTimeBox(false);
+		setIsOpenOtherBox(false);
+	}, [rightSideOutsideClick])
 	useEffect(() => {
 		dispatch(changeQuarter(matchTime));
 	}, [dispatch,matchTime])
@@ -40,7 +46,8 @@ function ScoreBoardBox() {
 	}, [dispatch,down])
 	
 	const handleMatchTime = () => {
-		setisOpenTimeBox(!isOpenTimeBox);
+		setIsOpenTimeBox(!isOpenTimeBox);
+		setIsOpenOtherBox(false)
 	};
 	const handleChangeMatchTime = (e, value) => {
 		let s = ''
@@ -52,7 +59,8 @@ function ScoreBoardBox() {
 	};
 
 	const handleOtherBox = () => {
-		setisOpenOtherBox(!isOpenOtherBox);
+		setIsOpenOtherBox(!isOpenOtherBox);
+		setIsOpenTimeBox(false)
 	};
 	const handleChangeDown = (e, value) => {
 		if (value === 1) setDown("1st");
@@ -63,7 +71,6 @@ function ScoreBoardBox() {
 	};
 	const handleChangeYard = (e, value) => {
 		setYard(value);
-		
 	};
 	
 	return (
@@ -76,9 +83,9 @@ function ScoreBoardBox() {
 				<TeamText>Away</TeamText>
 				<CustomSelect default={scoreBoardState.awayTeamShort} id="awaySelect" />
 			</AwayTeamBox>
-			<RightSide>
-				<MatchTime onClick={handleMatchTime}>
-					<ScoreBoardText>
+			<RightSide ref={rightSideRef}>
+				<MatchTime >
+					<ScoreBoardText onClick={handleMatchTime}>
 						{matchTime} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:33
 						<IoIosArrowUp
 							style={{
@@ -88,7 +95,7 @@ function ScoreBoardBox() {
 						/>
 					</ScoreBoardText>
 					<SliderBox>
-						<CustomSlider isOpen={isOpenTimeBox}>
+						<CustomSlider isOpen={isOpenTimeBox} >
 							<div id="quarter-slider" style={{ color: "black", marginBottom: "10px" }}>
 								Select Quarter
 							</div>
@@ -101,12 +108,13 @@ function ScoreBoardBox() {
 								marks
 								min={1}
 								max={4}
+								
 							/>
 						</CustomSlider>
 					</SliderBox>
 				</MatchTime>
-				<Other onClick={handleOtherBox}>
-					<ScoreBoardText>
+				<Other>
+					<ScoreBoardText onClick={handleOtherBox}>
 						:15 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {down} &nbsp;&amp;&nbsp; {yard}
 						<IoIosArrowUp
 							style={{

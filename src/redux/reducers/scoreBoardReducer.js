@@ -10,6 +10,8 @@ const scoreBoard = {
 	selectedCondition: "N", // Sunny -> S, Rain-Snow -> R, Normal -> N
 	isHomePlayersLoading: true,
 	isAwayPlayersLoading: true,
+	season: '2017',
+	isSeasonLoading: true,
 };
 
 export const ScoreBoardReducer = (state = scoreBoard, action) => {
@@ -36,6 +38,10 @@ export const ScoreBoardReducer = (state = scoreBoard, action) => {
 				return { ...state, isAwayPlayersLoading: action.payload.isLoading };
 			}
 			break;
+		case ActionTypes.CHANGE_SEASON:
+			return { ...state, season: action.payload.newSeason };
+		case ActionTypes.CHANGE_SEASON_LOADING_STATUS:
+			return { ...state, isSeasonLoading: action.payload.isSeasonLoading };
 		default:
 			return state;
 	}

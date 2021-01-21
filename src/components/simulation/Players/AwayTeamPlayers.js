@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react'
 import DraggableHelmet from "../Helmet/DraggableHelmet";
 import { useDispatch , useSelector} from 'react-redux'
-import { fetchPlayers } from '../../../redux/actions/ActionCreators';
+import { changeLoadingStatus, fetchPlayers } from '../../../redux/actions/ActionCreators';
 
 function AwayTeamPlayers() {
     const playersOnPitch = useSelector(state => state.playersOnPitch.filter(selected => selected.team === 'away'))
     const awayTeam = useSelector(state => state.scoreBoardState.awayTeamShort)
+    const season = useSelector(state => state.scoreBoardState.season)
     const dispatch = useDispatch();
     
     useEffect(() => {
-        dispatch(fetchPlayers(awayTeam, 'away'))
-    }, [awayTeam, dispatch])
+        dispatch(changeLoadingStatus(true, 'away'))
+        dispatch(fetchPlayers(awayTeam, season, 'away'))
+    }, [awayTeam, season, dispatch])
     return (
         <div id='awayTeamBox' style={{width: '50%', height: '100%'}}>
             {playersOnPitch.map((player) => (

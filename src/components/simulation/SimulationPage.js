@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState, useEffect } from "react";
 import {
 	SimulationNav,
 	NavLogo,
@@ -18,11 +18,19 @@ import { TiWeatherCloudy } from "react-icons/ti";
 import useWindowSize from "./Hooks/windowSizeHook";
 import WeatherCondition from "./ScoreBoard/WeatherCondition";
 import Players from "./Players/Players";
+import OutsideClick from "./Hooks/outsideClick";
+import Season from "./Season";
 
 function SimulationPage() {
 	const [isOpenWeather, setIsOpenWeather] = useState(false);
 	const windowSize = useWindowSize();
-	console.log(windowSize);
+	const weatherSelectorsRef = useRef(null);
+	const weatherSelectorOutsideClick = OutsideClick(weatherSelectorsRef);
+
+	useEffect(() => {
+		setIsOpenWeather(false);
+	}, [weatherSelectorOutsideClick]);
+
 	return (
 		<Fragment>
 			<SimulationNav>
@@ -35,11 +43,16 @@ function SimulationPage() {
 				</SmallScreen>
 			) : (
 				<div className="container-fluid">
-					<div className="row pt-5" style={{ display: "flex", justifyContent: "center" }}>
+					<div style={{ display: "flex", justifyContent: "center" }}>
+						<div className="pt-2" >
+							<Season />
+						</div>
+					</div>
+					<div className="row pt-2" style={{ display: "flex", justifyContent: "center" }}>
 						<div className="pitch">
 							<div id="pitchBox" style={{ width: "100%", height: "100%" }}>
 								<WeatherBox>
-									<div style={{ position: "relative" }}>
+									<div ref={weatherSelectorsRef} style={{ position: "relative" }}>
 										<WeatherIcon onClick={() => setIsOpenWeather(!isOpenWeather)}>
 											<TiWeatherCloudy />
 										</WeatherIcon>

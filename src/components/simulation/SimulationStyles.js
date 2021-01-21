@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import LogoImage from "../../shared/images/nfl_logo.png";
 export const SimulationNav = styled.div`
 	background: #393e46;
@@ -92,3 +92,58 @@ export const BackgroundLogo = styled.div`
 	background-size: cover;
 	opacity: 0.3;
 `
+
+
+
+
+
+
+
+
+export const SeasonSelect = styled.div`
+  width: 200px;
+  height: 40px;
+  border: 2px solid;
+  text-align: center;
+  visibility: ${(props) => (props.isBoxVisible ? "visible" : "hidden")};
+  opacity: ${(props) => (props.isBoxVisible ? "1" : "0")};
+  transition: all 0.5s ease;
+  cursor: pointer;
+`;
+
+const move = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+export const Seasons = styled.div`
+  width: 200px;
+  height: 40px;
+  display: ${(props) => (props.isSelectionOpen ? "flex" : "none")};
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  left: 50px;
+  animation: 0.6s ease-in-out 1 ${move};
+`;
+export const SeasonText = styled.span`
+  width: 50px;
+  line-height: 25px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+  &:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 0px;
+    transition: width 0.5s ease;
+  }
+  &:hover:after {
+    width: 100%;
+    background: black;
+  }
+`;

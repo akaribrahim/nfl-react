@@ -88,7 +88,6 @@ function Helmet(props) {
 	};
 
 	const handleSelectChange = (data) => {
-		console.log(data, props);
 		// data = { value : playerID, label: playerName}
 		// props.helmetID gives selected helmet on the pitch
 		// In the playersOnThePitch state, change the playerID(data.value) corresponding to props.helmetID
