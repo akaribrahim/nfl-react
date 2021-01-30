@@ -19,7 +19,7 @@ const DraggableHelmet = (props) => {
 	const [rate, setRate] = useState(position.x / pitchWidth);
 	const isHomeLoading = useSelector(state => state.scoreBoardState.isHomePlayersLoading)
 	const isAwayLoading = useSelector(state => state.scoreBoardState.isAwayPlayersLoading)
-	console.log('helmetID',props.helmetID, position)
+
 	useEffect(() => {
 		setRate(position.x / pitchWidth);
 	}, [position]);

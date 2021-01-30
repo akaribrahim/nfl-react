@@ -36,7 +36,8 @@ function Home() {
                         A tool to simulate NFL matches and predict outcomes
                     </div>
                     <div className="alt-text unselectable">
-                        'Name' predicts running games based on the data you enter using artificial intelligence.
+                        <span style={{fontStyle: 'italic', paddingRight:'10px'}}>Run It Again</span> 
+                        predicts running games based on the data you enter using artificial intelligence.
                     </div>
                 </div>
                 
