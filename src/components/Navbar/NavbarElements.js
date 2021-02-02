@@ -3,13 +3,13 @@ import {Link as LinkR} from 'react-router-dom'
 import {Link as LinkS} from 'react-scroll'
 
 export const Nav = styled.div`
-    background: #393e46;
+    background: transparent;
     height: 60px;
-    display: flex;
+    display: ${props => props.isVisible ? 'flex':'none'};
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-    position: sticky;
+    position: fixed;
     min-width: 100%;
     top: 0;
     z-index: 50;
@@ -106,4 +106,46 @@ export const NavLink = styled(LinkS)`
     }
 
 
+`
+
+
+export const RightNav = styled.div`
+    display: ${props => props.isVisible ? 'block':'none'};
+    width: 75px;
+    height: 250px;
+    position: fixed;
+    right: 0;
+    top: 40%;
+    z-index: 100;
+`
+
+export const RightNavMenu = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const RightNavItem = styled.div`
+    height: 60px;
+    width: 60px;
+    background-color: #575b4a;
+    border-radius: 50%;
+`
+
+export const RightNavLink = styled(LinkS)`
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    font-size: 25px;
+    &:hover {
+        color: #fff;
+    }
 `

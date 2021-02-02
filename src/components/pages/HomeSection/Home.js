@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {AiFillGithub} from 'react-icons/ai'
 import {GiAmericanFootballHelmet} from 'react-icons/gi';
@@ -8,7 +8,7 @@ import Video from '../../../shared/videos/video.mp4'
 
 const VideoBg = styled.video`
     width: 100%;
-    height: 800px;
+    height: 660px;
     -o-object-fit: cover;
     object-fit:cover;
     background: #232a34;
@@ -20,17 +20,19 @@ const HomeBg = styled.div`
     bottom:0;
     left:0;
     width:100%;
-    height: 800px;
+    height: 100vh;
     overflow:hidden;
 `
 function Home() {
+    
+    
     return (
-        <div className='home'>
+        <div>
             <HomeBg>
                 <VideoBg autoPlay loop muted src={Video} playsInline type='video/mp4' />
             </HomeBg>
             
-            <div className="content-box">
+            <div className="content-box" onScroll={()=>{console.log('burda')}}>
                 <div className="text-group">
                     <div className="top-text unselectable">
                         A tool to simulate NFL matches and predict outcomes
