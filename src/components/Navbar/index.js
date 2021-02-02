@@ -11,9 +11,11 @@ import {
 	RightNavMenu,
 	RightNavItem,
 	RightNavLink,
+	ExternalLink,
+	RightNavExternalLink,
 } from "./NavbarElements";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiFillGithub } from "react-icons/ai";
 import { IoIosCodeWorking } from "react-icons/io";
 import { RiTeamFill } from "react-icons/ri";
 import RightNavTooltip from "./RightNavTooltip";
@@ -58,6 +60,14 @@ const Navbar = (props) => {
 								About Us
 							</NavLink>
 						</NavItem>
+						<NavItem>
+							<ExternalLink
+								onClick={() => {
+									window.open("https://github.com/akaribrahim/nfl-react", "_blank");
+								}}>
+								View Source
+							</ExternalLink>
+						</NavItem>
 					</NavMenu>
 				</NavContainer>
 			</Nav>
@@ -83,6 +93,16 @@ const Navbar = (props) => {
 							<RightNavLink activeClass="active" to="aboutus" spy={true} smooth={true} offset={0} duration={800}>
 								<RiTeamFill />
 							</RightNavLink>
+						</RightNavTooltip>
+					</RightNavItem>
+					<RightNavItem>
+						<RightNavTooltip title="View Source">
+							<RightNavExternalLink
+								onClick={() => {
+									window.open("https://github.com/akaribrahim/nfl-react", "_blank");
+								}}>
+								<AiFillGithub />
+							</RightNavExternalLink>
 						</RightNavTooltip>
 					</RightNavItem>
 				</RightNavMenu>

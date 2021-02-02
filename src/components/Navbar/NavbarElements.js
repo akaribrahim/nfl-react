@@ -69,7 +69,7 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-	margin-right: 60px;
+	margin-right: 40px;
 	height: 60px;
 `;
 
@@ -110,14 +110,52 @@ export const NavLink = styled(LinkS)`
 		width: 100%;
 	}
 `;
+export const ExternalLink = styled.div`
+		color: #fff;
+	display: flex;
+	align-items: center;
+	text-decoration: none !important;
+	padding: 0 1rem;
+	height: 100%;
+	cursor: pointer;
+	position: relative;
+
+	&::after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 0%;
+		content: ".";
+		color: transparent;
+		background: #ffd369;
+		height: 2px;
+	}
+
+	&,
+	&::after,
+	&::before {
+		transition: all 0.5s;
+	}
+
+	&:hover {
+		color: #fff;
+	}
+
+	&:hover::after {
+		width: 100%;
+	}
+`
+
 
 export const RightNav = styled.div`
 	display: ${(props) => (props.isVisible ? "block" : "none")};
 	width: 75px;
-	height: 250px;
+	height: 300px;
 	position: fixed;
 	right: 0;
-	top: 40%;
+	top: 30%;
     z-index: 100;
     @media screen and (max-width: 768px) {
 		display: none;
@@ -141,6 +179,21 @@ export const RightNavItem = styled.div`
 `;
 
 export const RightNavLink = styled(LinkS)`
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none !important;
+	height: 100%;
+	cursor: pointer;
+	position: relative;
+	font-size: 25px;
+	&:hover {
+		color: #fff;
+	}
+`;
+
+export const RightNavExternalLink = styled.div`
 	color: #fff;
 	display: flex;
 	align-items: center;
