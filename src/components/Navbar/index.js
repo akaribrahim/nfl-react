@@ -26,7 +26,7 @@ const Navbar = (props) => {
 		};
 	}, []);
 	const handleScroll = (e) => {
-		if (window.pageYOffset > 100) {
+		if (window.pageYOffset > 50) {
 			setIsTopNavVisible(false);
 		} else {
 			setIsTopNavVisible(true);
@@ -34,13 +34,13 @@ const Navbar = (props) => {
 	};
 	return (
 		<>
-			<NavLogo activeClass="active" to="home" spy={true} smooth={true} offset={-70} duration={800}>
-				LOGO
-			</NavLogo>
 			<MobileIcon onClick={props.toggle}>
 				<FaBars />
 			</MobileIcon>
 			<Nav isVisible={isTopNavVisible}>
+				<NavLogo activeClass="active" to="home" spy={true} smooth={true} offset={-70} duration={800}>
+					LOGO
+				</NavLogo>
 				<NavContainer>
 					<NavMenu>
 						<NavItem>
