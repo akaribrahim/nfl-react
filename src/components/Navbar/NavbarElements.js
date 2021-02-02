@@ -6,8 +6,6 @@ export const Nav = styled.div`
 	background: transparent;
 	height: 60px;
 	display: ${(props) => (props.isVisible ? "flex" : "none")};
-	justify-content: space-between;
-	align-items: center;
 	font-size: 1rem;
 	position: fixed;
 	min-width: 100%;
@@ -21,18 +19,16 @@ export const Nav = styled.div`
 export const NavContainer = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-left: 75px;
 	height: 60px;
 	z-index: 1;
 	width: 100%;
 	max-width: 100%;
+	position: relative;
 `;
 
 export const NavLogo = styled(LinkS)`
-	position: fixed;
-	top: 15px;
-	left: 70px;
 	color: red;
+	margin-left: 30px;
 	z-index: 200;
 	cursor: pointer;
 	font-size: 1.5rem;
