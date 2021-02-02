@@ -1,14 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import wavesOpacity from '.././../shared/images/wavesOpacity.svg'
-const CustomShapeDivider = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-`;
 
 function Howitworks() {
 	return (
