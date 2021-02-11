@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Home from './pages/HomeSection/Home'
 import Sidebar from './Sidebar'
 import { Element } from "react-scroll";
-import AboutUs from './pages/AboutUs'
+import AboutUs from './pages/AboutUsSection/AboutUs'
 
 export default class Main extends Component {
     constructor(props){
@@ -32,7 +32,7 @@ export default class Main extends Component {
                 <Element id="howitworks">
                     <Howitworks/>
                 </Element>
-                <Element id="aboutus" style={{marginTop: "60px"}}>
+                <Element id="aboutus">
                     <AboutUs/>
                 </Element>
                 
