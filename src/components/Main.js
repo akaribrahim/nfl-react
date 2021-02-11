@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Howitworks from './pages/Howitworks'
+import Howitworks from './pages/HowItWorksSection/Howitworks'
 import Navbar from './Navbar'
 import Home from './pages/HomeSection/Home'
 import Sidebar from './Sidebar'

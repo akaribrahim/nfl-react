@@ -174,7 +174,7 @@ export const RightNavMenu = styled.div`
 export const RightNavItem = styled.div`
 	height: 60px;
 	width: 60px;
-	background-color: #575b4a;
+	background-color: #232a34;
 	border-radius: 50%;
 `;
 

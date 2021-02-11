@@ -6,10 +6,10 @@ import { setRef, Zoom } from "@material-ui/core";
 
 const useStylesBootstrap = makeStyles((theme) => ({
     arrow: {
-        color: '#575b4a',
+        color: '#232a34',
     },
 	tooltip: {
-        backgroundColor: '#575b4a',
+        backgroundColor: '#232a34',
         textAlign: "center",
         fontSize: '17px',
         width: '150px',

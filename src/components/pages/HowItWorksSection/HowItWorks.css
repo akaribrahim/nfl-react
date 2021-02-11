@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
+
+.works-page {
+    position: relative;
+    height: 750px;
+    width: 100%;
+}
+
+.custom-shape-divider-bottom-1613041978 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(180deg);
+}
+
+
+.custom-shape-divider-bottom-1613041978 svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 227px;
+}
+
+.custom-shape-divider-bottom-1613041978 .shape-fill {
+	fill: #f88f01d9;
+}
+
+.works-text-box {
+	margin-top: 20px;
+}
+.works-text-box-divider {
+	width: 2px;
+	height: 120px;
+	background-color: #f88f01d9;
+}
+.works-text-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 26px;
+	font-family: "Roboto Slab", serif;
+	letter-spacing: 1.5px;
+}
+.works-text-description {
+	margin-top: 10px;
+	font-family: "Open Sans Condensed", sans-serif;
+	font-size: 20px;
+	padding: 10px;
+}
+
+@media screen and (max-width: 992px) {
+	.custom-shape-divider-bottom-1613041978 {
+		display: none;
+	}
+    .works-page {
+        height: fit-content;
+    }
+    .second-divider {
+        display:none;
+    }
+}
+@media screen and (max-width: 768px) {
+    .works-text-box-divider {
+        display:none;
+    }
+    
+}
