@@ -20,7 +20,7 @@ function Howitworks() {
 			</div>
 			<div class="container-fluid pt-3">
 				<div class="row d-flex  justify-content-center align-items-center ">
-					<div class="col-md-5 col-lg-3 col-s d-flex flex-column justify-content-center align-items-center mt-3">
+					<div class="col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column justify-content-center align-items-center mt-3">
 						<div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>
 						<div class="works-text-box">
 							<div class="works-text-header">Section 1</div>
@@ -31,7 +31,7 @@ function Howitworks() {
 						</div>
 					</div>
 					<div class='works-text-box-divider'/>
-					<div class="col-md-5 col-lg-3 col-s d-flex flex-column justify-content-center align-items-center mt-3">
+					<div class="col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column justify-content-center align-items-center mt-3">
 						<div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>
 						<div class="works-text-box">
 							<div class="works-text-header">Section 2</div>
@@ -42,7 +42,7 @@ function Howitworks() {
 						</div>
 					</div>
 					<div class='works-text-box-divider second-divider'/>
-					<div class="col-md-5 col-lg-3 col-s d-flex flex-column justify-content-center align-items-center mt-3">
+					<div class="col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column justify-content-center align-items-center mt-3">
 						<div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>
 						<div class="works-text-box">
 							<div class="works-text-header">Section 3</div>

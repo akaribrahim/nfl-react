@@ -5,9 +5,9 @@ import { AiFillGithub } from "react-icons/ai";
 function AboutUs() {
 	return (
 		<div class="page">
-			<div class="container-fluid pt-3">
-				<div class="row d-flex justify-content-center align-items-center ">
-					<div class="person-box col-md-5 col-lg-3 col-s d-flex flex-column justify-content-center align-items-center mt-3">
+			<div class="container-fluid pt-3 pr-5">
+				<div class="row d-flex justify-content-around align-items-center ">
+					<div class="person-box col-md-5 col-lg-3 col-sm-8 col-10 d-flex flex-column justify-content-center align-items-center mt-3">
 						<div class="person-image-box spin circle">IMAGE</div>
 						<div class="person-text-box">
 							<div class="person-name">Öner İnce</div>
@@ -26,7 +26,7 @@ function AboutUs() {
 							</div>
 						</div>
 					</div>
-					<div class="person-box col-md-5 col-lg-3 col-s d-flex flex-column justify-content-center align-items-center mt-3">
+					<div class="person-box col-md-5 col-lg-3 col-sm-8 col-10 d-flex flex-column justify-content-center align-items-center mt-3">
 						<div class="person-image-box spin circle m-auto">IMAGE</div>
 						<div class="person-text-box">
 							<div class="person-name">İbrahim Akar</div>
@@ -45,7 +45,7 @@ function AboutUs() {
 							</div>
 						</div>
 					</div>
-					<div class="person-box col-md-5 col-lg-3 col-s d-flex flex-column justify-content-center align-items-center mt-3">
+					<div class="person-box col-md-5 col-lg-3 col-sm-8 col-10 d-flex flex-column justify-content-center align-items-center mt-3">
 						<div class="person-image-box spin circle">IMAGE</div>
 						<div class="person-text-box">
 							<div class="person-name">Mehmet Ali Böbeci</div>
