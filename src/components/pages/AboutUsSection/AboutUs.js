@@ -30,7 +30,7 @@ function AboutUs() {
 						<div class="person-image-box spin circle m-auto">IMAGE</div>
 						<div class="person-text-box">
 							<div class="person-name">İbrahim Akar</div>
-							<div class="person-job">Frontend Developer</div>
+							<div class="person-job">Software Developer</div>
 							<div class="person-link-box">
 								<div class='external-link' onClick={() => {
 									window.open("https://linkedin.com", "_blank");

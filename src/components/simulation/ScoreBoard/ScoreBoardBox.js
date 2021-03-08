@@ -95,8 +95,8 @@ function ScoreBoardBox() {
 						/>
 					</ScoreBoardText>
 					<SliderBox>
-						<CustomSlider isOpen={isOpenTimeBox} >
-							<div id="quarter-slider" style={{ color: "black", marginBottom: "10px" }}>
+						<CustomSlider isOpen={isOpenTimeBox} side="left" >
+							<div id="quarter-slider" style={{ color: "white", marginBottom: "10px" }}>
 								Select Quarter
 							</div>
 							<Slider
@@ -108,7 +108,7 @@ function ScoreBoardBox() {
 								marks
 								min={1}
 								max={4}
-								
+								color='secondary'
 							/>
 						</CustomSlider>
 					</SliderBox>
@@ -124,8 +124,8 @@ function ScoreBoardBox() {
 						/>
 					</ScoreBoardText>
 					<SliderBox>
-						<CustomSlider isOpen={isOpenOtherBox}>
-							<div id="down-slider" style={{ color: "black", marginBottom: "10px" }}>
+						<CustomSlider isOpen={isOpenOtherBox} style={{marginTop: '-155px'}}>
+							<div id="down-slider" style={{ color: "white", marginBottom: "10px" }}>
 								Select Down
 							</div>
 							<Slider
@@ -137,10 +137,11 @@ function ScoreBoardBox() {
 								marks
 								min={1}
 								max={4}
+								color='secondary'
 							/>
 						</CustomSlider>
-						<CustomSlider isOpen={isOpenOtherBox}>
-							<div id="yard-need" style={{ color: "black", marginBottom: "10px" }}>
+						<CustomSlider isOpen={isOpenOtherBox} style={{marginTop: '-185px'}}>
+							<div id="yard-need" style={{ color: "white", marginBottom: "10px" }}>
 								Select Yard Need
 							</div>
 							<Slider
@@ -152,6 +153,7 @@ function ScoreBoardBox() {
 								marks
 								min={1}
 								max={10}
+								color='secondary'
 							/>
 						</CustomSlider>
 					</SliderBox>

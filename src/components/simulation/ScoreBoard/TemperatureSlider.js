@@ -26,10 +26,9 @@ const CustomSlider = withStyles({
   track: {
     height: 16,
     borderRadius: 20,
-    marginTop: 2
+    marginTop: -2
   },
   rail: {
-    marginTop: 5,
     height: 10,
     borderRadius: 20
   },
@@ -39,7 +38,7 @@ const CustomSlider = withStyles({
     height: 35,
     width: 30,
     marginLeft: "-9px",
-    marginTop: "-8px",
+    marginTop: "-12px",
     background: "transparent",
     boxShadow: "none",
     "&:hover": {
@@ -70,7 +69,13 @@ export default function TemperatureSlider() {
 
   return (
     
-      <div>
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: '290px',
+        height: '100%',
+      }}>
         <CustomSlider
           min={-20}
           max={50}
@@ -80,7 +85,7 @@ export default function TemperatureSlider() {
           aria-labelledby="temp-slider"
           ThumbComponent={FaTemperatureHigh}
         />
-        <span style={{float:"right", width: "60px", marginLeft: "20px", marginTop:"12px"}}>{currentDegree} °C</span>
+        <span style={{ marginLeft: "20px", marginTop: '10px'}}>{currentDegree} °C</span>
       </div>
     
   );

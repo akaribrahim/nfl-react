@@ -23,36 +23,34 @@ export const NavLogo = styled(Link)`
 export const Score = styled.div`
 	width: 100%;
 	height: 90px;
-	position: absolute;
-	bottom: 0;
-	margin-bottom: 20px;
 	display: flex;
 	justify-content: center;
+	margin-top: 10px;
 `;
 
 export const PlayersBox = styled.div`
 	width: 100%;
-	height: calc(100% - 80px);
+	height: 100%;
+	
 `
 
 export const WeatherBox = styled.div`
 	display: flex;
 	justify-content: center;
-	position: absolute;
-	top: 0;
-	right: 0;
+	align-items: center;
+	position: relative;
+	height: 100%;
 `;
 export const WeatherIcon = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	height: 50px;
-	width: 50px;
-	right: 0;
 	top: 0;
+	right:0;
+	height: 100%;
+	width: 60px;
 	font-size: 30px;
-	margin-right: 10px;
 	border-radius: 50%;
 	cursor: pointer;
 	transition: box-shadow .3s;
@@ -65,8 +63,10 @@ export const WeatherSelectors = styled.div`
 	visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
 	opacity: ${(props) => (props.isOpen ? "1" : "0")};
 	transition: visibility 0.4s, opacity 0.3s ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-right: 60px;
-	
 `
 
 export const SmallScreen = styled.div`

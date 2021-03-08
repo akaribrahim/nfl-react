@@ -2,30 +2,47 @@
 .pitch {
     width: 1200px;
     height: 620px;
-    border: 2px solid;
     position: relative;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pitchBox {
+    width: 100%;
+    height: 500px;
+    background-image: url('../../shared/images/nflfield.gif');
+    background-repeat: no-repeat;
+    background-size: 100% 500px;
+}
+
+.top-selection-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 @media screen and (max-width : 1200px) {
     .pitch {
         width: 90%;
-        height: 620px;
-        border: 2px solid;
+        height: 720px;
     }
 }
 @media screen and (max-width : 992px) {
     .pitch {
         width: 98%;
-        height: 620px;
-        border: 2px solid;
+        height: 720px;
     }
 }
 @media screen and (max-width : 768px) {
     .pitch {
         width: 90%;
         height: 753px;
-        border: 2px solid;
     }
 }
 

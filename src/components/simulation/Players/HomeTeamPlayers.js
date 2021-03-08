@@ -17,7 +17,7 @@ function HomeTeamPlayers() {
         dispatch(fetchPlayers(homeTeam, season, 'home'))
     }, [homeTeam, season, dispatch])
     return (
-        <div id='homeTeamBox' style={{width: '50%', height: '100%'}}>
+        <div id='homeTeamBox' style={{width: '50%', height: '100%' }}>
             {playersOnPitch.map((player) => (
                 <DraggableHelmet
                     key={player.helmetID}

@@ -53,10 +53,14 @@ export const ScoreBoardText = styled.div`
 	height: 100%;
 `;
 export const CustomSlider = styled.div`
-	display: ${(props) => (props.isOpen ? "block" : "none")};
-	margin-top: -140px;
-	width: 90%;
-	background-color: white; // BURAYI UNUTMA
+	visibility: ${(props) => (props.isOpen ? "1" : "0")};
+	opacity: ${(props) => (props.isOpen ? "1" : "0")};
+	height: ${(props) => (props.isOpen ? "90px" : "50px")};
+	transition: height 0.4s, visibility 0.3s, opacity 0.5s ease-in;
+	margin-top: -155px;
+	width: 100%;
+	padding: 10px 20px;
+	background-color: ${(props) => (props.side === "left" ? "#0a043c" : "#03506f")};
 `;
 export const SliderBox = styled.div`
 	display: flex;
@@ -71,7 +75,6 @@ export const ConditionBox = styled.div`
   width: 200px;
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
 `;
 
 export const moveGradient = keyframes`
