@@ -20,6 +20,26 @@ export const NavLogo = styled(Link)`
 	}
 `;
 
+export const HomeTeamLabel = styled.div`
+	width: 8.2%;
+	height: 100%;
+	position: absolute;
+	left: ${(props) => (props.side === 'left' ? 0 : null)};
+	right: ${(props) => (props.side === 'right' ? 0 : null)};
+	bottom: 0;	
+	writing-mode: vertical-lr;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 28px;
+	background-color: ${props => props.color};	
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	word-spacing: 12px;
+	letter-spacing: 4px;
+	transform: ${(props) => (props.side === 'left' ? 'rotate(180deg)' : null)};
+`
+
 export const Score = styled.div`
 	width: 100%;
 	height: 90px;

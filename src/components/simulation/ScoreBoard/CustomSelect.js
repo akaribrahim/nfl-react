@@ -128,11 +128,12 @@ const CustomSelect = (props) => {
 	};
 
 	const handleChange = (e) => {
+		console.log(e)
 		if (props.id === "homeSelect") {
-			dispatch(changeHome(e.value));
+			dispatch(changeHome(e.value, e.label, e.color));
 			document.getElementById("homeSelect").children[1].style.backgroundColor = e.color;
 		} else {
-			dispatch(changeAway(e.value));
+			dispatch(changeAway(e.value, e.label, e.color));
 			document.getElementById("awaySelect").children[1].style.backgroundColor = e.color;
 		}
 	};

@@ -87,16 +87,20 @@ export const changeDown = (selectedDown) => ({
         newDown: selectedDown
     }
 });
-export const changeHome = (selectedTeam) => ({
+export const changeHome = (selectedTeamShort, selectedTeam, color) => ({
     type: ActionTypes.CHANGE_HOME,
     payload: {
-        newHome: selectedTeam
+        newHomeShort: selectedTeamShort,
+        newHome: selectedTeam,
+        color
     }
 })
-export const changeAway = (selectedTeam) => ({
+export const changeAway = (selectedTeamShort, selectedTeam, color) => ({
     type: ActionTypes.CHANGE_AWAY,
     payload: {
-        newAway: selectedTeam
+        newAwayShort: selectedTeamShort,
+        newAway: selectedTeam,
+        color
     }
 })
 export const changeTemperature = (selectedTemperature) => ({

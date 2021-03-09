@@ -1,8 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import { useSelector } from 'react-redux'
-import { setRef, Zoom } from "@material-ui/core";
+import { Zoom } from "@material-ui/core";
 
 const useStylesBootstrap = makeStyles((theme) => ({
     arrow: {

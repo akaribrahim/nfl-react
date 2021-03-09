@@ -10,8 +10,10 @@ import {
   BackgroundLogo,
   SmallScreen,
   SmallScreenText,
+  HomeTeamLabel
 } from "./SimulationStyles";
 import "./Simulation.css";
+import {useSelector} from 'react-redux'
 import TemperatureSlider from "./ScoreBoard/TemperatureSlider";
 import ScoreBoardBox from "./ScoreBoard/ScoreBoardBox";
 import { TiWeatherCloudy } from "react-icons/ti";
@@ -24,6 +26,9 @@ import Season from "./Season";
 function SimulationPage() {
   const [isOpenWeather, setIsOpenWeather] = useState(false);
   const windowSize = useWindowSize();
+  const homeTeamName = useSelector((state) => state.scoreBoardState.homeTeamName);
+  const homeTeamColor = useSelector((state) => state.scoreBoardState.homeColor)
+  console.log(homeTeamColor)
   const weatherSelectorsRef = useRef(null);
   const weatherSelectorOutsideClick = OutsideClick(weatherSelectorsRef);
 
@@ -65,6 +70,12 @@ function SimulationPage() {
                 </WeatherBox>
               </div>
               <div id="pitchBox" className="pitchBox">
+                <HomeTeamLabel side='left' color={homeTeamColor}>
+                  {homeTeamName}
+                </HomeTeamLabel>
+                <HomeTeamLabel side='right' color={homeTeamColor}>
+                  {homeTeamName}
+                </HomeTeamLabel>
                 <PlayersBox>
                   <Players />
                 </PlayersBox>
