@@ -25,6 +25,7 @@ function HomeTeamPlayers() {
                     helmetPosition={player.helmetPosition}
                     playerID = {player.playerID}
                     side= {'home'}
+                    isRusher={player.isRusher}
                 />
             ))}
         </div>

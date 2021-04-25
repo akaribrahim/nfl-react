@@ -1,17 +1,17 @@
 import * as ActionTypes from '../actions/ActionTypes'
 
 const players = [
-    {helmetID: 1, helmetPosition: {x: 500, y: 22}, team: 'home', playerID: 1},
-    {helmetID: 2, helmetPosition: {x: 500, y: 123}, team: 'home', playerID: 1},
-    {helmetID: 3, helmetPosition: {x: 500, y: 163}, team: 'home', playerID: 1},
-    {helmetID: 4, helmetPosition: {x: 326, y: 203}, team: 'home', playerID: 1},
+    {helmetID: 1, helmetPosition: {x: 380, y: 22}, team: 'home', playerID: 1},
+    {helmetID: 2, helmetPosition: {x: 380, y: 123}, team: 'home', playerID: 1},
+    {helmetID: 3, helmetPosition: {x: 380, y: 163}, team: 'home', playerID: 1},
+    {helmetID: 4, helmetPosition: {x: 226, y: 203}, team: 'home', playerID: 1, isRusher: true},
     {helmetID: 5, helmetPosition: {x: 430, y: 203}, team: 'home', playerID: 1},
-    {helmetID: 6, helmetPosition: {x: 500, y: 203}, team: 'home', playerID: 1},
-    {helmetID: 7, helmetPosition: {x: 380, y: 243}, team: 'home', playerID: 1},
-    {helmetID: 8, helmetPosition: {x: 500, y: 243}, team: 'home', playerID: 1},
-    {helmetID: 9, helmetPosition: {x: 500, y: 283}, team: 'home', playerID: 1},
-    {helmetID: 10, helmetPosition: {x: 500, y: 323}, team: 'home', playerID: 1},
-    {helmetID: 11, helmetPosition: {x: 400, y: 435}, team: 'home', playerID: 1},
+    {helmetID: 6, helmetPosition: {x: 380, y: 203}, team: 'home', playerID: 1},
+    {helmetID: 7, helmetPosition: {x: 280, y: 243}, team: 'home', playerID: 1},
+    {helmetID: 8, helmetPosition: {x: 380, y: 243}, team: 'home', playerID: 1},
+    {helmetID: 9, helmetPosition: {x: 380, y: 283}, team: 'home', playerID: 1},
+    {helmetID: 10, helmetPosition: {x: 380, y: 323}, team: 'home', playerID: 1},
+    {helmetID: 11, helmetPosition: {x: 300, y: 435}, team: 'home', playerID: 1},
 
     {helmetID: 12, helmetPosition: {x: 60, y: 0}, team: 'away', playerID: 1},
     {helmetID: 13, helmetPosition: {x: 120, y: 50}, team: 'away', playerID: 1},
@@ -34,21 +34,25 @@ export const PlayersOnPitchReducer = (state = players, action) => {
             newState.find(selectedHelmet => selectedHelmet.helmetID === newPlayer.helmetID).playerID = newPlayer.playerID;
             return newState;
         case ActionTypes.CHANGE_PLAYERS_ON_FIELD:
+            var newState = [...state]
+            var newplayers = action.payload.playerIDs
             if(action.payload.team === 'home'){
-                var newplayers = action.payload.playerIDs
-                var newState = [...state]
                 newState.filter(selectedSide => selectedSide.team === action.payload.team).map((player, i) => {
                     player.playerID = newplayers[i].playerNFLID;
                 });
             }
             else if(action.payload.team === 'away'){
-                var newplayers = action.payload.playerIDs
-                var newState = [...state]
                 newState.filter(selectedSide => selectedSide.team === action.payload.team).map((player, i) => {
                     player.playerID = newplayers[i].playerNFLID;
                 });
             }            
-            return newState;   
+            return newState;
+        case ActionTypes.CHANGE_PLAYER_POSITION:
+            var newState = [...state]
+            var helmetID = action.payload.helmetID
+            var newPosition = action.payload.newPosition
+            newState.find(player => player.helmetID === helmetID).helmetPosition = newPosition
+            return newState
         default:
             return state;
     }

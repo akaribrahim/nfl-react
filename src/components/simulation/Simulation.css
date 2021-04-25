@@ -1,9 +1,8 @@
 
 .pitch {
     width: 1200px;
-    height: 620px;
-    position: relative;
     display: flex;
+    margin-top: 30px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -12,7 +11,7 @@
 .pitchBox {
     width: 100%;
     height: 500px;
-    position: relative;
+    display: flex;
     background-image: url('../../shared/images/nflfield.png');
     background-repeat: no-repeat;
     background-size: 100% 500px;

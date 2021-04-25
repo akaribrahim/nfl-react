@@ -21,11 +21,8 @@ export const NavLogo = styled(Link)`
 `;
 
 export const HomeTeamLabel = styled.div`
-	width: 8.2%;
+	width: 10%;
 	height: 100%;
-	position: absolute;
-	left: ${(props) => (props.side === 'left' ? 0 : null)};
-	right: ${(props) => (props.side === 'right' ? 0 : null)};
 	bottom: 0;	
 	writing-mode: vertical-lr;
 	display: flex;

@@ -70,20 +70,20 @@ function SimulationPage() {
                 </WeatherBox>
               </div>
               <div id="pitchBox" className="pitchBox">
-                <HomeTeamLabel side='left' color={homeTeamColor}>
-                  {homeTeamName}
-                </HomeTeamLabel>
-                <HomeTeamLabel side='right' color={homeTeamColor}>
+                <HomeTeamLabel id='home-side-label' side='left' color={homeTeamColor}>
                   {homeTeamName}
                 </HomeTeamLabel>
                 <PlayersBox>
                   <Players />
                 </PlayersBox>
+                <HomeTeamLabel id='away-side-label' side='right' color={homeTeamColor}>
+                  {homeTeamName}
+                </HomeTeamLabel>
 
-                <Score>
-                  <ScoreBoardBox />
-                </Score>
               </div>
+              <Score>
+                <ScoreBoardBox />
+              </Score>
             </div>
         </div>
       )}

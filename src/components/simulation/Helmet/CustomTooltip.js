@@ -13,9 +13,10 @@ const useStylesBootstrap = makeStyles((theme) => ({
 	},
 }));
 
-const PlayerInformations = ({ player }) => {
+const PlayerInformations = ({ player, isRusher }) => {
 	return (
 		<div style={{ margin: "5px" }}>
+			{isRusher && <div  style={{ fontStyle: 'italic', textAlign: "center", marginBottom: "6px", fontSize: "11px" }}>Rusher</div>}
 			<div style={{ textAlign: "center", marginBottom: "5px", fontSize: "13px" }}>{player.playerName}</div>
 			<div>Position: {player.playerPosition}</div>
 			<div>College: {player.playerCollege}</div>
@@ -38,6 +39,6 @@ export default function CustomTooltip(props) {
 		state.awayPlayers.find(current => current.playerNFLID === props.player_id)
 	)
 	return (
-		<Tooltip title={<PlayerInformations player={player}/>} arrow classes={classes} {...props}></Tooltip>
+		<Tooltip title={<PlayerInformations player={player} isRusher={props.isRusher}/>} arrow classes={classes} {...props}></Tooltip>
 	);
 }
