@@ -19,6 +19,8 @@ import { AiOutlineHome, AiFillGithub } from "react-icons/ai";
 import { IoIosCodeWorking } from "react-icons/io";
 import { RiTeamFill } from "react-icons/ri";
 import RightNavTooltip from "./RightNavTooltip";
+import Logo from "../../shared/images/logo.jpg";
+
 const Navbar = (props) => {
 	const [isTopNavVisible, setIsTopNavVisible] = useState(true);
 	useEffect(() => {
@@ -41,7 +43,7 @@ const Navbar = (props) => {
 			</MobileIcon>
 			<Nav isVisible={isTopNavVisible}>
 				<NavLogo activeClass="active" to="home" spy={true} smooth={true} offset={-70} duration={800}>
-					LOGO
+					<img src={Logo} alt='site-logo' className='site-logo' />
 				</NavLogo>
 				<NavContainer>
 					<NavMenu>

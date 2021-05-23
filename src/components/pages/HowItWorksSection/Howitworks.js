@@ -27,6 +27,11 @@ function Howitworks() {
             </svg>
          </div>
          <div class="container-fluid pt-3">
+            <div className='about-us-header mb-5 mt-5'>
+               <div className='header-line'></div>
+               <div className='header-text'>How it works</div>
+               <div className='header-line'></div>
+            </div>
             <div class="row d-flex  justify-content-center align-items-center ">
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
                   <div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>

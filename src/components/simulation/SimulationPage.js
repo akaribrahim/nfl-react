@@ -10,7 +10,8 @@ import {
   BackgroundLogo,
   SmallScreen,
   SmallScreenText,
-  HomeTeamLabel
+  HomeTeamLabel,
+  VideoBg
 } from "./SimulationStyles";
 import "./Simulation.css";
 import {useSelector} from 'react-redux'
@@ -22,6 +23,12 @@ import WeatherCondition from "./ScoreBoard/WeatherCondition";
 import Players from "./Players/Players";
 import OutsideClick from "./Hooks/outsideClick";
 import Season from "./Season";
+import Logo from "../../shared/images/logo.jpg";
+import Video from "../../shared/videos/video.mp4";
+import styled from "styled-components";
+
+
+
 
 function SimulationPage() {
   const [isOpenWeather, setIsOpenWeather] = useState(false);
@@ -39,7 +46,10 @@ function SimulationPage() {
   return (
     <Fragment>
       <SimulationNav>
-        <NavLogo to="/">NFL</NavLogo>
+				<VideoBg autoPlay loop muted src={Video} playsInline type="video/mp4" />
+        <NavLogo to="/">
+          <img src={Logo} alt='site-logo' className='site-logo' />
+        </NavLogo>
       </SimulationNav>
       {windowSize[0] < 1078 ? (
         <SmallScreen>

@@ -22,3 +22,7 @@
     display: flex;
     justify-content: center;
 }
+
+.site-logo {
+    max-width: 100px;
+}

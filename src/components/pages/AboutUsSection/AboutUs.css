@@ -2,7 +2,7 @@
 .page {
     width: 100%;
     min-height: 750px;
-    padding-top: 75px;
+    padding-top: 55px;
     padding-bottom: 75px;
 }
 
@@ -12,7 +12,24 @@
     width: 350px;
 }
 
+.about-us-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
 
+.header-line {
+    background: #F89626;
+    flex: 1;
+    height: 3px;
+}
+
+.header-text {
+    padding: 0 20px;
+}
 
 .person-image-box {
     position: relative;

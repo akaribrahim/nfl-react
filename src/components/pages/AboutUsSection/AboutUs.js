@@ -8,8 +8,13 @@ import MaliPhoto from "../../../shared/images/team/mehmetali.jpeg";
 function AboutUs() {
    return (
       <div class="page">
-         <div class="container-fluid pt-3 pr-5">
-            <div class="row d-flex justify-content-around align-items-center ">
+         <div class="container-fluid pt-3 ">
+            <div className='about-us-header'>
+               <div className='header-line'></div>
+               <div className='header-text'>About Us</div>
+               <div className='header-line'></div>
+            </div>
+            <div class="row d-flex justify-content-around align-items-center px-5">
                <div class="person-box col-md-5 col-lg-3 col-sm-8 col-10 d-flex flex-column justify-content-center align-items-center mt-3">
                   <div class="person-image-box spin circle">
                      <img className="person-image" src={OnerPhoto} alt='image'></img>
