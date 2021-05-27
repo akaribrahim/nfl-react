@@ -26,6 +26,7 @@ import Season from "./Season";
 import Logo from "../../shared/images/logo.jpg";
 import Video from "../../shared/videos/video.mp4";
 import styled from "styled-components";
+import Predict from "./Prediction/Predict";
 
 
 
@@ -59,43 +60,46 @@ function SimulationPage() {
           <BackgroundLogo />
         </SmallScreen>
       ) : (
-        <div className="container-fluid d-flex justify-content-center">
-            <div className="pitch">
-              <div className="top-selection-bar">
-                <Season />
-                <WeatherBox>
-                  <div
-                    ref={weatherSelectorsRef}
-                  >
-                    <WeatherIcon
-                      onClick={() => setIsOpenWeather(!isOpenWeather)}
+        <>
+          <div className="container-fluid d-flex justify-content-center">
+              <div className="pitch">
+                <div className="top-selection-bar">
+                  <Season />
+                  <WeatherBox>
+                    <div
+                      ref={weatherSelectorsRef}
                     >
-                      <TiWeatherCloudy />
-                    </WeatherIcon>
-                    <WeatherSelectors isOpen={isOpenWeather}>
-                      <TemperatureSlider />
-                      <WeatherCondition />
-                    </WeatherSelectors>
-                  </div>
-                </WeatherBox>
-              </div>
-              <div id="pitchBox" className="pitchBox">
-                <HomeTeamLabel id='home-side-label' side='left' color={homeTeamColor}>
-                  {homeTeamName}
-                </HomeTeamLabel>
-                <PlayersBox>
-                  <Players />
-                </PlayersBox>
-                <HomeTeamLabel id='away-side-label' side='right' color={homeTeamColor}>
-                  {homeTeamName}
-                </HomeTeamLabel>
+                      <WeatherIcon
+                        onClick={() => setIsOpenWeather(!isOpenWeather)}
+                      >
+                        <TiWeatherCloudy />
+                      </WeatherIcon>
+                      <WeatherSelectors isOpen={isOpenWeather}>
+                        <TemperatureSlider />
+                        <WeatherCondition />
+                      </WeatherSelectors>
+                    </div>
+                  </WeatherBox>
+                </div>
+                <div id="pitchBox" className="pitchBox">
+                  <HomeTeamLabel id='home-side-label' side='left' color={homeTeamColor}>
+                    {homeTeamName}
+                  </HomeTeamLabel>
+                  <PlayersBox>
+                    <Players />
+                  </PlayersBox>
+                  <HomeTeamLabel id='away-side-label' side='right' color={homeTeamColor}>
+                    {homeTeamName}
+                  </HomeTeamLabel>
 
+                </div>
+                <Score>
+                  <ScoreBoardBox />
+                </Score>
               </div>
-              <Score>
-                <ScoreBoardBox />
-              </Score>
-            </div>
-        </div>
+          </div>
+          <Predict />
+        </>
       )}
     </Fragment>
   );

@@ -31,7 +31,10 @@ export const PlayersOnPitchReducer = (state = players, action) => {
         case ActionTypes.CHANGE_PLAYER:
             var newPlayer = action.payload; // helmetID, playerID
             var newState = [...state]
+            console.log(newState, newPlayer)
             newState.find(selectedHelmet => selectedHelmet.helmetID === newPlayer.helmetID).playerID = newPlayer.playerID;
+            newState.find(selectedHelmet => selectedHelmet.helmetID === newPlayer.helmetID).playerNFLPosition = newPlayer.playerPosition;
+            newState.find(selectedHelmet => selectedHelmet.helmetID === newPlayer.helmetID).playerName = newPlayer.playerName;
             return newState;
         case ActionTypes.CHANGE_PLAYERS_ON_FIELD:
             var newState = [...state]
@@ -39,11 +42,15 @@ export const PlayersOnPitchReducer = (state = players, action) => {
             if(action.payload.team === 'home'){
                 newState.filter(selectedSide => selectedSide.team === action.payload.team).map((player, i) => {
                     player.playerID = newplayers[i].playerNFLID;
+                    player.playerNFLPosition = newplayers[i].playerPosition;
+                    player.playerName = newplayers[i].playerName;
                 });
             }
             else if(action.payload.team === 'away'){
                 newState.filter(selectedSide => selectedSide.team === action.payload.team).map((player, i) => {
                     player.playerID = newplayers[i].playerNFLID;
+                    player.playerName = newplayers[i].playerName;
+                    player.playerNFLPosition = newplayers[i].playerPosition;
                 });
             }            
             return newState;

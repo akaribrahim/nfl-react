@@ -120,7 +120,8 @@ function Helmet(props) {
       // data = { value : playerID, label: playerName}
       // props.helmetID gives selected helmet on the pitch
       // In the playersOnThePitch state, change the playerID(data.value) corresponding to props.helmetID
-      dispatch(changePlayer(data.value, props.helmetID));
+      var newPlayer = players.find(p => p.playerNFLID===data.value)
+      dispatch(changePlayer(data.value, props.helmetID, newPlayer.playerName, newPlayer.playerPosition));
    };
    return (
       <div>

@@ -21,7 +21,9 @@ const DraggableHelmet = (props) => {
    const isAwayLoading = useSelector((state) => state.scoreBoardState.isAwayPlayersLoading);
    const ref = useRef();
    const dispatch = useDispatch();
-
+   useEffect(() => {
+      handleStop()
+   }, [])
    useEffect(() => {
       setBounds({
          right: homeSideWidth - HELMET_SIZE,
@@ -68,8 +70,9 @@ const DraggableHelmet = (props) => {
          onStop={handleStop}
          disabled={isDialogOpen}
          bounds={{ top: 0, left: 0, right: bounds.right, bottom: bounds.bottom }}
-      >
+         >
          <div
+            id={props.helmetID}
             onMouseOver={() => {
                setIsHover(true);
             }}

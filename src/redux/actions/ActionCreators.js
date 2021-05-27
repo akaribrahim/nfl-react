@@ -68,11 +68,13 @@ export const changePlayerPosition = (helmetID, newPosition) => ({
     }
 })
 
-export const changePlayer = (settedPlayerID, selectedHelmetID) => ({
+export const changePlayer = (settedPlayerID, selectedHelmetID, playerName, playerPosition) => ({
     type: ActionTypes.CHANGE_PLAYER,
     payload: {
         playerID: settedPlayerID,
-        helmetID : selectedHelmetID
+        helmetID : selectedHelmetID,
+        playerPosition,
+        playerName
     }
 });
 
