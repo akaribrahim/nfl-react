@@ -30,3 +30,38 @@
     color: white;
     text-align: center;
 }
+
+.rusher {
+    position: relative;
+}
+
+.direction-arrow-box {
+    position: absolute;
+    color: white;
+    left: 10px;
+    top: 5px
+}
+.direction-arrows {
+    position: relative;
+}
+.up-arrow {
+    position: absolute;
+    left: 60px;
+    top: -50px;
+    opacity: .6;
+    z-index: 5;
+    cursor: pointer;
+}
+.main-arrow {
+    position: absolute;
+    z-index: -1;
+    cursor: move;
+}
+.down-arrow {
+    position: absolute;
+    left: 60px;
+    top: 5px;
+    opacity: .6;
+    z-index: 5;
+    cursor: pointer;
+}

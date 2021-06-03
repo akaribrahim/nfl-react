@@ -16,6 +16,7 @@ const scoreBoard = {
 	isAwayPlayersLoading: true,
 	season: '2017',
 	isSeasonLoading: true,
+	rusherDirection: 90,
 };
 
 export const ScoreBoardReducer = (state = scoreBoard, action) => {
@@ -46,6 +47,8 @@ export const ScoreBoardReducer = (state = scoreBoard, action) => {
 			return { ...state, season: action.payload.newSeason };
 		case ActionTypes.CHANGE_SEASON_LOADING_STATUS:
 			return { ...state, isSeasonLoading: action.payload.isSeasonLoading };
+		case ActionTypes.CHANGE_RUSHER_DIRECTION:
+			return { ...state, rusherDirection: action.payload.rusherDirection};
 		default:
 			return state;
 	}

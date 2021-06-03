@@ -4,9 +4,10 @@ import Helmet from "./Helmet";
 import useElementSize from "../Hooks/elementSizeHook";
 import CustomTooltip from "./CustomTooltip";
 import ReactLoading from "react-loading";
-import { changePlayerPosition } from "../../../redux/actions/ActionCreators";
+import { changePlayerPosition, changeRusherDirection } from "../../../redux/actions/ActionCreators";
 import { useDispatch, useSelector } from "react-redux";
-
+import { FaArrowRight } from "react-icons/fa";
+import Arrow from '@elsdoerfer/react-arrow';
 const HELMET_SIZE = 32;
 const DraggableHelmet = (props) => {
    const [position, setPosition] = useState(props.helmetPosition);
@@ -14,6 +15,9 @@ const DraggableHelmet = (props) => {
    const [isDialogOpen, setIsDialogOpen] = useState(false);
    const [isDragging, setIsDragging] = useState(false);
    const [isHover, setIsHover] = useState(false);
+   const [directionArrowAngle, setDirectionArrowAngle] = useState(90)
+   const [directionArrowTopValue, setDirectionArrowTopValue] = useState(5)
+   const [changeDirectionArrowsVisible, setChangeDirectionArrowsVisible] = useState(false)
    const [homeSideWidth, homeSideHeight] = useElementSize("homeTeamBox", [500, 500]);
    const [labelWidth, labelHeight] = useElementSize("home-side-label", [100, 500]);
    const [bounds, setBounds] = useState({});
@@ -38,6 +42,9 @@ const DraggableHelmet = (props) => {
    useEffect(() => {
       dispatch(changePlayerPosition(props.helmetID, calculatedPosition));
    }, [calculatedPosition]);
+   useEffect(() => {
+      dispatch(changeRusherDirection(directionArrowAngle));
+   }, [directionArrowAngle])
 
    const handleDrag = () => {
       setIsDragging(true);
@@ -62,6 +69,10 @@ const DraggableHelmet = (props) => {
       setIsHover(false);
    };
 
+   const handleDirectionArrow = (e) => {
+      console.log(e)
+   }
+
    return (
       <Draggable
          ref={ref}
@@ -73,14 +84,56 @@ const DraggableHelmet = (props) => {
          >
          <div
             id={props.helmetID}
-            onMouseOver={() => {
-               setIsHover(true);
-            }}
-            onMouseLeave={() => {
-               setIsHover(false);
-            }}
+
             style={{ position: "absolute" }}
          >
+            {props.isRusher && 
+               <div className='direction-arrow-box' onClick={handleDirectionArrow}>
+                  <div className='direction-arrows'>
+                     <div className='up-arrow' style={{ display: changeDirectionArrowsVisible ? 'block': 'none'}} onClick={() => {
+                        console.log('up')
+                        if(0<directionArrowAngle && directionArrowAngle<=180){
+                           setDirectionArrowAngle(directionArrowAngle - 10)
+                           if(directionArrowTopValue <= 5 && directionArrowAngle <= 90)
+                              setDirectionArrowTopValue(directionArrowTopValue - 10)
+                        } 
+                     }}>
+                        <Arrow
+                           angle={360}
+                           length={18}
+                           style={{
+                              width: '50px'
+                           }}
+                        />
+                     </div>
+                     <div className='main-arrow' style={{ top: directionArrowTopValue}} onClick={() => setChangeDirectionArrowsVisible(!changeDirectionArrowsVisible)}>
+                        <Arrow
+                           angle={directionArrowAngle}
+                           length={16}
+                           style={{
+                              width: '70px'
+                           }}
+                        />
+                     </div>
+                     <div className='down-arrow' style={{ display: changeDirectionArrowsVisible ? 'block': 'none'}} onClick={() => {
+                        console.log('down')
+                        if(0<=directionArrowAngle && directionArrowAngle<180){
+                           setDirectionArrowAngle(directionArrowAngle + 10)
+                           if(directionArrowTopValue < 5)
+                              setDirectionArrowTopValue(directionArrowTopValue + 10)
+                        }
+                     }}>
+                        <Arrow
+                           angle={180}
+                           length={18}
+                           style={{
+                              width: '50px'
+                           }}
+                        />
+                     </div>
+                  </div>
+               </div>
+            }
             {(isHomeLoading && props.side === "home") || (isAwayLoading && props.side === "away") ? (
                <ReactLoading type={"bubbles"} color="#000" />
             ) : (
@@ -91,7 +144,15 @@ const DraggableHelmet = (props) => {
                   player_id={props.playerID}
                   isRusher={props.isRusher}
                >
-                  <div>
+                  <div
+                     onMouseOver={() => {
+                        setIsHover(true);
+                     }}
+                     onMouseLeave={() => {
+                        setIsHover(false);
+                     }}
+                  >
+
                      <Helmet
                         side={props.side}
                         helmetID={props.helmetID}

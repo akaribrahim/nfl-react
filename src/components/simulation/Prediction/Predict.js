@@ -208,13 +208,11 @@ function Predict() {
               Temperature: scoreBoardState.selectedTemperature,
               GameWeather: 2,
               WindSpeed: 7,
-              RusherDir: 115
+              RusherDir: scoreBoardState.rusherDirection
           }
-          console.log(payload)
           Object.keys(payload_).map(function(key, index) {
             payload_[key] = payload[key];
           });
-          console.log(payload_)
         axios.post('https://nflrestapi.herokuapp.com/predict/', payload_, {
             headers: {
                 'Content-Type': 'application/json',

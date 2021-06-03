@@ -144,3 +144,9 @@ export const changeSeasonLoadingStatus = (isLoading) => ({
         isSeasonLoading: isLoading
     }
 })
+export const changeRusherDirection = (rusherDirection) => ({
+    type: ActionTypes.CHANGE_RUSHER_DIRECTION,
+    payload: {
+        rusherDirection
+    }
+})
