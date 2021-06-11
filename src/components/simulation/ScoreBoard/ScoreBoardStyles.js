@@ -56,7 +56,8 @@ export const CustomSlider = styled.div`
 	visibility: ${(props) => (props.isOpen ? "1" : "0")};
 	opacity: ${(props) => (props.isOpen ? "1" : "0")};
 	height: ${(props) => (props.isOpen ? "90px" : "50px")};
-	transition: height 0.4s, visibility 0.3s, opacity 0.5s ease-in;
+	z-index: ${(props) => (props.isOpen ? 1 : -1 )};
+	transition: height 0.4s, visibility 0.3s, opacity 0.5s, z-index .1s ease-in;
 	margin-top: -155px;
 	width: 100%;
 	padding: 10px 20px;

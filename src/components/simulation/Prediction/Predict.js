@@ -142,15 +142,15 @@ function Predict() {
     const [prediction, setPrediction] = useState(null)
     const preparePitchPlayers = () => {
         function compare( a, b ) {
-            if ( a.helmetPosition.y < b.helmetPosition.y ){
+            if ( a.calculatedPosition.y < b.calculatedPosition.y ){
                 return -1;
             }
-            if ( a.helmetPosition.y > b.helmetPosition.y ){
+            if ( a.calculatedPosition.y > b.calculatedPosition.y ){
                 return 1;
             }
-            if( a.helmetPosition.y === b.helmetPosition.y ){
-                if(a.helmetPosition.x > b.helmetPosition.x) return 1
-                if(a.helmetPosition.x < b.helmetPosition.x) return -1
+            if( a.calculatedPosition.y === b.calculatedPosition.y ){
+                if(a.calculatedPosition.x > b.calculatedPosition.x) return 1
+                if(a.calculatedPosition.x < b.calculatedPosition.x) return -1
                 return 0
             }
             return 0;
@@ -172,16 +172,16 @@ function Predict() {
             if(item.isRusher){
                 return {
                     ...acc,
-                    rusher_X: item.helmetPosition.x,
-                    rusher_Y: item.helmetPosition.y,
+                    rusher_X: item.calculatedPosition.x,
+                    rusher_Y: item.calculatedPosition.y,
                     rusher_NflId: item.playerID,
                     rusher_Position: item.playerNFLPosition,
                 }
             }
             return {
               ...acc,
-              [`offense_${item.helmetPositionID}_X`]: item.helmetPosition.x,
-              [`offense_${item.helmetPositionID}_Y`]: item.helmetPosition.y,
+              [`offense_${item.helmetPositionID}_X`]: item.calculatedPosition.x,
+              [`offense_${item.helmetPositionID}_Y`]: item.calculatedPosition.y,
               [`offense_${item.helmetPositionID}_NflId`]: item.playerID,
               [`offense_${item.helmetPositionID}_Position`]: item.playerNFLPosition,
             };
@@ -189,8 +189,8 @@ function Predict() {
           var awayPlayers = players[1].reduce((acc, item) => {
             return {
               ...acc,
-              [`defense_${item.helmetPositionID}_X`]: item.helmetPosition.x,
-              [`defense_${item.helmetPositionID}_Y`]: item.helmetPosition.y,
+              [`defense_${item.helmetPositionID}_X`]: item.calculatedPosition.x,
+              [`defense_${item.helmetPositionID}_Y`]: item.calculatedPosition.y,
               [`defense_${item.helmetPositionID}_NflId`]: item.playerID,
               [`defense_${item.helmetPositionID}_Position`]: item.playerNFLPosition,
             };

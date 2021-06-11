@@ -11,7 +11,7 @@ import Arrow from '@elsdoerfer/react-arrow';
 const HELMET_SIZE = 32;
 const DraggableHelmet = (props) => {
    const [position, setPosition] = useState(props.helmetPosition);
-   const [calculatedPosition, setCalculatedPosition] = useState(props.helmetPosition);
+   const [calculatedPosition, setCalculatedPosition] = useState(props.calculatedPosition);
    const [isDialogOpen, setIsDialogOpen] = useState(false);
    const [isDragging, setIsDragging] = useState(false);
    const [isHover, setIsHover] = useState(false);
@@ -25,6 +25,8 @@ const DraggableHelmet = (props) => {
    const isAwayLoading = useSelector((state) => state.scoreBoardState.isAwayPlayersLoading);
    const ref = useRef();
    const dispatch = useDispatch();
+
+   console.log(position, calculatedPosition)
    useEffect(() => {
       handleStop()
    }, [])
@@ -40,7 +42,7 @@ const DraggableHelmet = (props) => {
    }, [homeSideWidth, labelWidth]);
 
    useEffect(() => {
-      dispatch(changePlayerPosition(props.helmetID, calculatedPosition));
+      dispatch(changePlayerPosition(props.helmetID, position, calculatedPosition));
    }, [calculatedPosition]);
    useEffect(() => {
       dispatch(changeRusherDirection(directionArrowAngle));
@@ -69,10 +71,6 @@ const DraggableHelmet = (props) => {
       setIsHover(false);
    };
 
-   const handleDirectionArrow = (e) => {
-      console.log(e)
-   }
-
    return (
       <Draggable
          ref={ref}
@@ -88,7 +86,7 @@ const DraggableHelmet = (props) => {
             style={{ position: "absolute" }}
          >
             {props.isRusher && 
-               <div className='direction-arrow-box' onClick={handleDirectionArrow}>
+               <div className='direction-arrow-box'>
                   <div className='direction-arrows'>
                      <div className='up-arrow' style={{ display: changeDirectionArrowsVisible ? 'block': 'none'}} onClick={() => {
                         console.log('up')

@@ -47,7 +47,6 @@ function SimulationPage() {
   return (
     <Fragment>
       <SimulationNav>
-				<VideoBg autoPlay loop muted src={Video} playsInline type="video/mp4" />
         <NavLogo to="/">
           <img src={Logo} alt='site-logo' className='site-logo' />
         </NavLogo>

@@ -60,11 +60,12 @@ export const changeFieldPlayers = (newPlayerIDs, side) => ({
     }
 })
 
-export const changePlayerPosition = (helmetID, newPosition) => ({
+export const changePlayerPosition = (helmetID, newPosition, newCalculatedPosition) => ({
     type: ActionTypes.CHANGE_PLAYER_POSITION,
     payload: {
         helmetID,
-        newPosition
+        newPosition,
+        newCalculatedPosition
     }
 })
 

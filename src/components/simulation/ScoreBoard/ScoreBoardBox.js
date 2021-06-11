@@ -124,7 +124,7 @@ function ScoreBoardBox() {
 						/>
 					</ScoreBoardText>
 					<SliderBox>
-						<CustomSlider isOpen={isOpenOtherBox} style={{marginTop: '-155px'}}>
+						<CustomSlider isOpen={isOpenOtherBox} style={{ marginTop: '-155px' }}>
 							<div id="down-slider" style={{ color: "white", marginBottom: "10px" }}>
 								Select Down
 							</div>

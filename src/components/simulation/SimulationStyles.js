@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled, {keyframes} from "styled-components";
 import LogoImage from "../../shared/images/nfl_logo.png";
 export const SimulationNav = styled.div`
-	background: #393e46;
+	background: #000;
 	display: flex;
 	justify-content: center;
 	align-items: center;

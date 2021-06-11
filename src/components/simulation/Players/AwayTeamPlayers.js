@@ -20,6 +20,7 @@ function AwayTeamPlayers() {
                     key={player.helmetID}
                     helmetID={player.helmetID}
                     helmetPosition={player.helmetPosition}
+                    calculatedPosition={player.calculatedPosition}
                     playerID = {player.playerID}
                     side={'away'}
                 />
