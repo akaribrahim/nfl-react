@@ -1,5 +1,7 @@
 import React from "react";
 import "./HowItWorks.css";
+import Comp_1 from '../../../shared/videos/Comp_1.gif'
+
 function Howitworks() {
    return (
       <div class="works-page">
@@ -34,7 +36,9 @@ function Howitworks() {
             </div>
             <div class="row d-flex  justify-content-center align-items-center ">
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
-                  <div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>
+                  <div style={{ width: "200px", height: "200px"}}>
+                     <img className='howitworks-gif' src={Comp_1} alt='step1' />
+                  </div>
                   <div class="works-text-box">
                      <div class="works-text-header">Step 1</div>
                      <div class="works-text-description">
@@ -45,7 +49,7 @@ function Howitworks() {
                </div>
                <div class="works-text-box-divider" />
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
-                  <div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>
+                  <div style={{ width: "200px", height: "200px" }}></div>
                   <div class="works-text-box">
                      <div class="works-text-header">Step 2</div>
                      <div class="works-text-description">
@@ -55,7 +59,7 @@ function Howitworks() {
                </div>
                <div class="works-text-box-divider second-divider" />
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
-                  <div style={{ width: "200px", height: "200px", border: "1px solid black" }}>Image</div>
+                  <div style={{ width: "200px", height: "200px" }}></div>
                   <div class="works-text-box">
                      <div class="works-text-header">Step 3</div>
                      <div class="works-text-description">
