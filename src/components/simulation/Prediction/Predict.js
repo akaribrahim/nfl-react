@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import './Predict.css'
 import { FaTimes } from "react-icons/fa";
 import { CSSTransition } from 'react-transition-group';
+import HashLoader from "react-spinners/HashLoader";
 import {useSelector} from 'react-redux'
 import axios from 'axios';
 
@@ -113,10 +114,14 @@ const payload_ = {
 
 const customStyles = {
     overlay: {
-        backgroundColor: 'none',
-        backgroundImage: `url(https://i.giphy.com/media/1msB01n1yAHqlY1XO2/giphy.webp)`,
+        backgroundColor: 'initial',
+/*         backgroundImage: `url(https://i.giphy.com/media/1msB01n1yAHqlY1XO2/giphy.webp)`,
         backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        width: '70%',
+        height: '85%',
+        margin: 'auto',
+        borderRadius: '30px', */
     },
     content: {
         top: '50%',
@@ -140,6 +145,8 @@ function Predict() {
     const scoreBoardState = useSelector((state) => state.scoreBoardState);
     const playersOnPitch = useSelector((state) => state.playersOnPitch);
     const [prediction, setPrediction] = useState(null)
+    const [isLoading, setIsLoading] = useState(true);
+
     const preparePitchPlayers = () => {
         function compare( a, b ) {
             if ( a.calculatedPosition.y < b.calculatedPosition.y ){
@@ -165,7 +172,10 @@ function Predict() {
     }
 
     const handlePredict = () => {
+        const { isHomePlayersLoading, isAwayPlayersLoading, isSeasonLoading } = scoreBoardState
+        if(isHomePlayersLoading || isAwayPlayersLoading || isSeasonLoading) return
         setIsResultModalOpen(true)
+        setIsLoading(true)
         var players = preparePitchPlayers()
         var homePlayers = players[0].reduce((acc, item) => {
             console.log(item.helmetPositionID, item)
@@ -221,6 +231,9 @@ function Predict() {
             .then(function (response) {
                 console.log('Response',response);
                 setPrediction(response.data.prediction.toFixed(2))
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 2000);
             })
             .catch(function (error) {
                 setPrediction(3.4999990078373444.toFixed(2))
@@ -237,46 +250,50 @@ function Predict() {
                 </div>
                 <div className='line' style={{ flex: `${isHovered ? '.4' : '0'}` }}></div>
             </div>
-                <Modal
-                    isOpen={isResultModalOpen}
-                    style={customStyles}
-                    contentLabel="Example Modal"
-                    closeTimeoutMS={2000}
-                >
-                    <div className='content'>
-                        <div className='condition'>
-                            <div className='single-condition'>
-                                <div>{scoreBoardState.season}</div>
-                                <div className='condition-text'>season</div>
-                            </div>
-                            <div className='single-condition'>
-                                <div>{scoreBoardState.selectedTemperature} °C</div>
-                                <div className='condition-text'>{weatherCondition[scoreBoardState.selectedCondition]}</div>
-                            </div>
-                            <div className='single-condition'>
-                                <div>{scoreBoardState.selectedQuarter.slice(0,1)}<sup>{scoreBoardState.selectedQuarter.slice(1)}</sup> Quarter</div>
-                                <div className='condition-text'>{scoreBoardState.selectedDown.slice(0,1)}<sup>{scoreBoardState.selectedDown.slice(1)}</sup> &amp; {scoreBoardState.selectedYard}</div>
-                            </div>
+            <Modal
+                isOpen={isResultModalOpen}
+                style={customStyles}
+                contentLabel="Example Modal"
+                closeTimeoutMS={2000}
+            >
+                <div className='content'>
+                    <div className='condition'>
+                        <div className='single-condition'>
+                            <div>{scoreBoardState.season}</div>
+                            <div className='condition-text'>season</div>
                         </div>
-                        <div className='teams'>
-                          <div className='home-team' style={{ color: scoreBoardState.homeColor}}>{scoreBoardState.homeTeamName}</div>
-                          <div className='versus'>v</div>
-                          <div className='away-team' style={{ color: scoreBoardState.awayColor}}>{scoreBoardState.awayTeamName}</div>
+                        <div className='single-condition'>
+                            <div>{scoreBoardState.selectedTemperature} °C</div>
+                            <div className='condition-text'>{weatherCondition[scoreBoardState.selectedCondition]}</div>
                         </div>
-                        <div className='prediction-box'>
-                            <div className='prediction-label'>
-                                {playersOnPitch.find(player => player.isRusher === true).playerName}
-                            </div>
-                            <div className='prediction-result'>
-                                {prediction} yard
-                            </div>
+                        <div className='single-condition'>
+                            <div>{scoreBoardState.selectedQuarter.slice(0,1)}<sup>{scoreBoardState.selectedQuarter.slice(1)}</sup> Quarter</div>
+                            <div className='condition-text'>{scoreBoardState.selectedDown.slice(0,1)}<sup>{scoreBoardState.selectedDown.slice(1)}</sup> &amp; {scoreBoardState.selectedYard}</div>
                         </div>
-                        <div className='modal-close' onClick={() => setIsResultModalOpen(false)}>
-                            Close
-                        </div>
-
                     </div>
-                </Modal>
+                    <div className='teams'>
+                        <div className='home-team' style={{ color: scoreBoardState.homeColor}}>{scoreBoardState.homeTeamName}</div>
+                        <div className='versus'>v</div>
+                        <div className='away-team' style={{ color: scoreBoardState.awayColor}}>{scoreBoardState.awayTeamName}</div>
+                    </div>
+                    <div className='prediction-box'>
+                        <div className='prediction-label'>
+                            {playersOnPitch.find(player => player.isRusher === true).playerName}
+                        </div>
+                            <div className='prediction-result'>
+                                {isLoading ? 
+                                    <HashLoader color={'#fff'} loading={isLoading} size={20} />
+                                    :
+                                    <div>{prediction} yard</div>
+                                }
+                            </div>
+                    </div>
+                    <div className='modal-close' onClick={() => setIsResultModalOpen(false)}>
+                        Close
+                    </div>
+
+                </div>
+            </Modal>
         </>
     )
 }
