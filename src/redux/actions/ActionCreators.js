@@ -151,3 +151,9 @@ export const changeRusherDirection = (rusherDirection) => ({
         rusherDirection
     }
 })
+export const changeBallPosition = (ballPosition) => ({
+    type: ActionTypes.CHANGE_BALL_POSITION,
+    payload: {
+        ballPosition
+    }
+})

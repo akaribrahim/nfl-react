@@ -26,7 +26,6 @@ const DraggableHelmet = (props) => {
    const ref = useRef();
    const dispatch = useDispatch();
 
-   console.log(position, calculatedPosition)
    useEffect(() => {
       handleStop()
    }, [])
@@ -70,11 +69,10 @@ const DraggableHelmet = (props) => {
       setIsDialogOpen(isDialogOpen);
       setIsHover(false);
    };
-
    return (
       <Draggable
          ref={ref}
-         position={position}
+         position={props.helmetPosition}
          onDrag={handleDrag}
          onStop={handleStop}
          disabled={isDialogOpen}
@@ -89,7 +87,6 @@ const DraggableHelmet = (props) => {
                <div className='direction-arrow-box'>
                   <div className='direction-arrows'>
                      <div className='up-arrow' style={{ display: changeDirectionArrowsVisible ? 'block': 'none'}} onClick={() => {
-                        console.log('up')
                         if(0<directionArrowAngle && directionArrowAngle<=180){
                            setDirectionArrowAngle(directionArrowAngle - 10)
                            if(directionArrowTopValue <= 5 && directionArrowAngle <= 90)
@@ -114,7 +111,6 @@ const DraggableHelmet = (props) => {
                         />
                      </div>
                      <div className='down-arrow' style={{ display: changeDirectionArrowsVisible ? 'block': 'none'}} onClick={() => {
-                        console.log('down')
                         if(0<=directionArrowAngle && directionArrowAngle<180){
                            setDirectionArrowAngle(directionArrowAngle + 10)
                            if(directionArrowTopValue < 5)

@@ -27,6 +27,7 @@ import Logo from "../../shared/images/logo.jpg";
 import Video from "../../shared/videos/video.mp4";
 import styled from "styled-components";
 import Predict from "./Prediction/Predict";
+import DraggableBall from "./Ball/DraggableBall";
 
 
 
@@ -86,6 +87,7 @@ function SimulationPage() {
                   </HomeTeamLabel>
                   <PlayersBox>
                     <Players />
+                    
                   </PlayersBox>
                   <HomeTeamLabel id='away-side-label' side='right' color={homeTeamColor}>
                     {homeTeamName}

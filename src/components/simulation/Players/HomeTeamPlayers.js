@@ -9,7 +9,6 @@ function HomeTeamPlayers() {
     const homeTeam = useSelector(state => state.scoreBoardState.homeTeamShort)
     const season = useSelector(state => state.scoreBoardState.season)
 
-
     const dispatch = useDispatch();
     
     useEffect(() => {

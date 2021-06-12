@@ -17,6 +17,7 @@ const scoreBoard = {
 	season: '2017',
 	isSeasonLoading: true,
 	rusherDirection: 90,
+	ballPosition: { x: 490, y: 235 },
 };
 
 export const ScoreBoardReducer = (state = scoreBoard, action) => {
@@ -49,6 +50,8 @@ export const ScoreBoardReducer = (state = scoreBoard, action) => {
 			return { ...state, isSeasonLoading: action.payload.isSeasonLoading };
 		case ActionTypes.CHANGE_RUSHER_DIRECTION:
 			return { ...state, rusherDirection: action.payload.rusherDirection};
+		case ActionTypes.CHANGE_BALL_POSITION:
+			return { ...state, ballPosition: action.payload.ballPosition};
 		default:
 			return state;
 	}
