@@ -1,6 +1,8 @@
 import React from "react";
 import "./HowItWorks.css";
-import Comp_1 from '../../../shared/videos/Comp_1.gif'
+import Step_1 from '../../../shared/videos/Comp_1.gif'
+import Step_2 from '../../../shared/videos/step_2.gif'
+import Step_3 from '../../../shared/videos/step_3.gif'
 
 function Howitworks() {
    return (
@@ -37,7 +39,7 @@ function Howitworks() {
             <div class="row d-flex  justify-content-center align-items-center ">
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
                   <div style={{ width: "200px", height: "200px"}}>
-                     <img className='howitworks-gif' src={Comp_1} alt='step1' />
+                     <img className='howitworks-gif' src={Step_1} alt='step1' />
                   </div>
                   <div class="works-text-box">
                      <div class="works-text-header">Step 1</div>
@@ -49,22 +51,25 @@ function Howitworks() {
                </div>
                <div class="works-text-box-divider" />
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
-                  <div style={{ width: "200px", height: "200px" }}></div>
+                  <div style={{ width: "200px", height: "200px" }}>
+                     <img className='howitworks-gif' src={Step_2} alt='step1' />
+                  </div>
                   <div class="works-text-box">
                      <div class="works-text-header">Step 2</div>
                      <div class="works-text-description">
-                        Decide your runner who will be carrying the ball. If you ready, click Predict
+                        Decide your runner who will be carrying the ball. 
                      </div>
                   </div>
                </div>
                <div class="works-text-box-divider second-divider" />
                <div class="howitworks-box col-md-5 col-lg-3 col-sm-8 col-8 d-flex flex-column align-items-center mt-3">
-                  <div style={{ width: "200px", height: "200px" }}></div>
+                  <div style={{ width: "200px", height: "200px" }}>
+                     <img className='howitworks-gif' src={Step_3} alt='step1' />
+                  </div>
                   <div class="works-text-box">
                      <div class="works-text-header">Step 3</div>
                      <div class="works-text-description">
-                        Your predicted yard gain will be on the screen. Try again with different inputs to compare the
-                        results !
+                        If you ready, click Predict. Your predicted yard gain will be on the screen. 
                      </div>
                   </div>
                </div>

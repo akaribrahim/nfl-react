@@ -233,7 +233,7 @@ function Predict() {
                 setPrediction(response.data.prediction.toFixed(2))
                 setTimeout(() => {
                     setIsLoading(false)
-                }, 2000);
+                }, 1000);
             })
             .catch(function (error) {
                 setPrediction(3.4999990078373444.toFixed(2))
